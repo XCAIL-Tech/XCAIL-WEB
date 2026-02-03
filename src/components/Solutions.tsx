@@ -1,6 +1,9 @@
 import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
 
+// ✅ IMPORT DE IMAGEN (clave)
+import logoAsistea from "@/assets/img/logo-asistea1.png";
+
 export function Solutions() {
   return (
     <section id="producto" className="container py-20 sm:py-28">
@@ -28,9 +31,10 @@ export function Solutions() {
             {/* Logo AsisTEA */}
             <div className="flex justify-center">
               <img
-                src="/assets/img/logo-asistea1.png"
+                src={logoAsistea}
                 alt="AsisTEA - Plataforma desarrollada por XCAIL"
                 className="max-w-[260px] w-full object-contain"
+                loading="lazy"
               />
             </div>
 
