@@ -9,4 +9,12 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    assetsInlineLimit: 0, // No inline assets as base64
+    rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[name].[ext]' // Keep original filenames
+      }
+    }
+  }
 });
