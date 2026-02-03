@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 // ✅ Imports de imágenes (Vite assets)
 import certificadoDEI from "@/assets/img/XCAILTECH-CERTIFICADO-DEI.jpg";
-import ceremoniaBritCham from "@/assets/img/4.jpg";
+import ceremoniaBritCham from "@/assets/img/4-britcham.jpg";
 import equipoXcail from "@/assets/img/equipo-xcail.jpg";
 import entregaEmbajada from "@/assets/img/1.jpg";
 import premioInnovacion from "@/assets/img/XCAIL-PremioInnovTran.png";
