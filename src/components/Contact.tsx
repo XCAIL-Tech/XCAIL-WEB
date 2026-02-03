@@ -197,7 +197,7 @@ export function Contact() {
 
               {/* Mensaje éxito - justo arriba del botón */}
               {status === "success" && (
-                <div className="p-3 rounded-md bg-green-900/30 border border-green-600 text-green-400 text-sm text-center">
+                <div className="p-3 rounded-md bg-green-900/95 border border-green-600 text-green-400 text-sm text-center">
                   Mensaje enviado correctamente. Nos comunicaremos pronto.
                 </div>
               )}

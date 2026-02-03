@@ -1,4 +1,4 @@
-﻿import { Card, CardContent } from "./ui/card";
+import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
 
 export function Solutions() {
@@ -28,7 +28,7 @@ export function Solutions() {
             {/* Logo AsisTEA */}
             <div className="flex justify-center">
               <img
-                src="/src/assets/img/LOGO-ASISTEA.png"
+                src="/assets/img/LOGO-ASISTEA.png"
                 alt="AsisTEA - Plataforma desarrollada por XCAIL"
                 className="max-w-[260px] w-full object-contain"
               />

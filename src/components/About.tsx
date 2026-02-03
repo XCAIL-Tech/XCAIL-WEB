@@ -10,7 +10,7 @@ export function About() {
           <div className="bg-muted/50 border rounded-lg p-6 flex flex-col items-center justify-between text-center h-full">
             <div className="w-[180px] h-[180px] flex items-center justify-center">
               <img
-                src="/src/assets/img/perfil-c2.jpg"
+                src="/assets/img/perfil-c2.jpg"
                 alt="Carlos Ezequiel Leiva - Fundador y CEO de XCAIL Technologies"
                 className="max-w-full max-h-full object-contain rounded-md"
               />

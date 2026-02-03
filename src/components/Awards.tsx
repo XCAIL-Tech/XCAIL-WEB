@@ -27,7 +27,7 @@ export function Awards() {
               Cámara de Comercio Argentino-Británica (BritCham)
             </CardTitle>
             <p className="text-sm text-muted-foreground">
-              Mención Especial – Diversidad, Equidad e Inclusión (DEI) · 2025
+              Mención Especial — Diversidad, Equidad e Inclusión (DEI) · 2025
             </p>
           </CardHeader>
 
@@ -46,7 +46,7 @@ export function Awards() {
               <figure className="space-y-2 text-center">
                 <div className="w-full rounded-lg border bg-background/40 flex items-center justify-center p-4 md:h-[360px]">
                   <img
-                    src="/src/assets/img/XCAILTECH-CERTIFICADO-DEI.jpg"
+                    src="/assets/img/XCAILTECH-CERTIFICADO-DEI.jpg"
                     alt="Certificado oficial BritCham DEI"
                     className="max-w-full max-h-[260px] md:max-h-full object-contain"
                   />
@@ -60,7 +60,7 @@ export function Awards() {
               <figure className="space-y-2 text-center">
                 <div className="w-full rounded-lg border bg-background/40 flex items-center justify-center p-4 md:h-[360px]">
                   <img
-                    src="/src/assets/img/4.jpg"
+                    src="/assets/img/4.jpg"
                     alt="Ceremonia BritCham Argentina 2025"
                     className="max-w-full max-h-[260px] md:max-h-full object-contain"
                   />
@@ -74,7 +74,7 @@ export function Awards() {
               <figure className="space-y-2 text-center">
                 <div className="w-full rounded-lg border bg-background/40 flex items-center justify-center p-4 md:h-[360px]">
                   <img
-                    src="/src/assets/img/equipo-xcail.jpg"
+                    src="/assets/img/equipo-xcail.jpg"
                     alt="Equipo XCAIL con certificado y distinción"
                     className="max-w-full max-h-[260px] md:max-h-full object-contain"
                   />
@@ -88,7 +88,7 @@ export function Awards() {
               <figure className="space-y-2 text-center">
                 <div className="w-full rounded-lg border bg-background/40 flex items-center justify-center p-4 md:h-[360px]">
                   <img
-                    src="/src/assets/img/1.jpg"
+                    src="/assets/img/1.jpg"
                     alt="Entrega del reconocimiento en la Embajada Británica"
                     className="max-w-full max-h-[260px] md:max-h-full object-contain"
                   />
@@ -106,7 +106,7 @@ export function Awards() {
         <Card className="bg-muted/50">
           <CardHeader>
             <CardTitle className="text-2xl">
-              Premios Sadosky – Cámara de la Industria Argentina del Software (CESSI)
+              Premios Sadosky — Cámara de la Industria Argentina del Software (CESSI)
             </CardTitle>
             <p className="text-sm text-muted-foreground">
               Finalista en dos categorías · 2025
@@ -124,12 +124,12 @@ export function Awards() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <img
-                src="/src/assets/img/XCAIL-PremioInnovTran.png"
+                src="/assets/img/XCAIL-PremioInnovTran.png"
                 alt="Certificado Innovación Transformadora"
                 className="rounded-lg border w-full object-contain"
               />
               <img
-                src="/src/assets/img/XCAIL-PremioImpactoDigital.png"
+                src="/assets/img/XCAIL-PremioImpactoDigital.png"
                 alt="Certificado Impacto Digital"
                 className="rounded-lg border w-full object-contain"
               />
