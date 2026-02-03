@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { Menu } from "lucide-react";
-
 import { buttonVariants } from "./ui/button";
 import { ModeToggle } from "./mode-toggle";
-
 import {
   Sheet,
   SheetContent,
@@ -11,15 +9,11 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-
-// ✅ IMPORT DEL LOGO (clave)
-import logoXcail from "@/assets/img/XCAIL-TECH-LOGO-SF.png";
 
 interface RouteProps {
   href: string;
@@ -46,10 +40,9 @@ export function Navbar() {
           <NavigationMenuItem className="flex font-bold">
             <a href="/" className="ml-2 flex items-center text-xl font-bold">
               <img
-                src={logoXcail}
+                src="/media/logos/xcail-logo.png"
                 alt="XCAIL Technologies"
                 className="h-10 w-auto"
-                loading="eager"
               />
             </a>
           </NavigationMenuItem>
@@ -77,7 +70,7 @@ export function Navbar() {
 
                 <nav className="mt-4 flex flex-col items-center justify-center gap-2">
                   {routeList.map(({ href, label }) => (
-                    <a
+                    
                       key={label}
                       href={href}
                       onClick={() => setIsOpen(false)}
@@ -94,7 +87,7 @@ export function Navbar() {
           {/* Desktop */}
           <nav className="hidden md:flex gap-2">
             {routeList.map((route) => (
-              <a
+              
                 key={route.href}
                 href={route.href}
                 className={`text-[17px] ${buttonVariants({ variant: "ghost" })}`}

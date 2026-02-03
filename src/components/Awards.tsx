@@ -1,13 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-// ✅ Imports de imágenes (Vite assets)
-import certificadoDEI from "@/assets/img/XCAILTECH-CERTIFICADO-DEI.jpg";
-import ceremoniaBritCham from "@/assets/img/5-britcham.jpg";
-import equipoXcail from "@/assets/img/equipo-xcail.jpg";
-import entregaEmbajada from "@/assets/img/1.jpg";
-import premioInnovacion from "@/assets/img/XCAIL-PremioInnovTran.png";
-import premioImpacto from "@/assets/img/XCAIL-PremioImpactoDigital.png";
-
 export function Awards() {
   return (
     <section id="reconocimientos" className="container py-24 sm:py-32">
@@ -50,14 +42,13 @@ export function Awards() {
             {/* Galería institucional 2x2 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-              {/* Arriba izquierda */}
+              {/* Certificado DEI */}
               <figure className="space-y-2 text-center">
                 <div className="w-full rounded-lg border bg-background/40 flex items-center justify-center p-4 md:h-[360px]">
                   <img
-                    src={certificadoDEI}
+                    src="/media/reconocimientos/britcham/certificado-dei.jpg"
                     alt="Certificado oficial BritCham DEI"
                     className="max-w-full max-h-[260px] md:max-h-full object-contain"
-                    loading="lazy"
                   />
                 </div>
                 <figcaption className="text-xs text-muted-foreground">
@@ -65,29 +56,27 @@ export function Awards() {
                 </figcaption>
               </figure>
 
-              {/* Arriba derecha */}
+              {/* Foto con embajador y directivos */}
               <figure className="space-y-2 text-center">
                 <div className="w-full rounded-lg border bg-background/40 flex items-center justify-center p-4 md:h-[360px]">
                   <img
-                    src={ceremoniaBritCham}
-                    alt="Ceremonia BritCham Argentina 2025"
+                    src="/media/reconocimientos/britcham/foto-embajador-directivos.jpg"
+                    alt="Ceremonia BritCham con embajador británico"
                     className="max-w-full max-h-[260px] md:max-h-full object-contain"
-                    loading="lazy"
                   />
                 </div>
                 <figcaption className="text-xs text-muted-foreground">
-                  Ceremonia BritCham Argentina 2025 — validación y visibilidad ante actores del ecosistema.
+                  Ceremonia BritCham Argentina 2025 — con embajador británico y directivos.
                 </figcaption>
               </figure>
 
-              {/* Abajo izquierda */}
+              {/* Equipo XCAIL */}
               <figure className="space-y-2 text-center">
                 <div className="w-full rounded-lg border bg-background/40 flex items-center justify-center p-4 md:h-[360px]">
                   <img
-                    src={equipoXcail}
+                    src="/media/reconocimientos/britcham/equipo-premiacion.jpg"
                     alt="Equipo XCAIL con certificado y distinción"
                     className="max-w-full max-h-[260px] md:max-h-full object-contain"
-                    loading="lazy"
                   />
                 </div>
                 <figcaption className="text-xs text-muted-foreground">
@@ -95,14 +84,13 @@ export function Awards() {
                 </figcaption>
               </figure>
 
-              {/* Abajo derecha */}
+              {/* Entrega en embajada */}
               <figure className="space-y-2 text-center">
                 <div className="w-full rounded-lg border bg-background/40 flex items-center justify-center p-4 md:h-[360px]">
                   <img
-                    src={entregaEmbajada}
+                    src="/media/reconocimientos/britcham/entrega-jurado-embajada.jpg"
                     alt="Entrega del reconocimiento en la Embajada Británica"
                     className="max-w-full max-h-[260px] md:max-h-full object-contain"
-                    loading="lazy"
                   />
                 </div>
                 <figcaption className="text-xs text-muted-foreground">
@@ -136,16 +124,14 @@ export function Awards() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <img
-                src={premioInnovacion}
+                src="/media/reconocimientos/sadosky/certificado-innovacion-transformadora.png"
                 alt="Certificado Innovación Transformadora"
                 className="rounded-lg border w-full object-contain"
-                loading="lazy"
               />
               <img
-                src={premioImpacto}
+                src="/media/reconocimientos/sadosky/certificado-impacto-digital.png"
                 alt="Certificado Impacto Digital"
                 className="rounded-lg border w-full object-contain"
-                loading="lazy"
               />
             </div>
           </CardContent>
