@@ -28,7 +28,7 @@ export function Solutions() {
             {/* Logo AsisTEA */}
             <div className="flex justify-center">
               <img
-                src="/assets/img/LOGO-ASISTEA.png"
+                src="/assets/img/logo-asistea1.png"
                 alt="AsisTEA - Plataforma desarrollada por XCAIL"
                 className="max-w-[260px] w-full object-contain"
               />
