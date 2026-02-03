@@ -71,7 +71,7 @@ export function Solutions() {
                   "
                   asChild
                 >
-                  
+                  <a
                     href="https://asistea.app"
                     target="_blank"
                     rel="noopener noreferrer"

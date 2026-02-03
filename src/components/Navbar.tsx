@@ -70,7 +70,7 @@ export function Navbar() {
 
                 <nav className="mt-4 flex flex-col items-center justify-center gap-2">
                   {routeList.map(({ href, label }) => (
-                    
+                    <a
                       key={label}
                       href={href}
                       onClick={() => setIsOpen(false)}
@@ -87,7 +87,7 @@ export function Navbar() {
           {/* Desktop */}
           <nav className="hidden md:flex gap-2">
             {routeList.map((route) => (
-              
+              <a
                 key={route.href}
                 href={route.href}
                 className={`text-[17px] ${buttonVariants({ variant: "ghost" })}`}
