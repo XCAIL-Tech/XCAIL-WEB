@@ -66,7 +66,7 @@ export function Awards() {
                   />
                 </div>
                 <figcaption className="text-xs text-muted-foreground">
-                  Ceremonia BritCham Argentina 2025 — con embajador británico y directivos.
+                  Ceremonia BritCham Argentina 2025 — Embajada Británica.
                 </figcaption>
               </figure>
 
