@@ -60,7 +60,7 @@ export function Awards() {
               <figure className="space-y-2 text-center">
                 <div className="w-full rounded-lg border bg-background/40 flex items-center justify-center p-4 md:h-[360px]">
                   <img
-                    src="/media/reconocimientos/britcham/foto-embajador-directivos.jpg"
+                    src="/media/reconocimientos/britcham/foto-embajador-directivos.jpeg"
                     alt="Ceremonia BritCham con embajador británico"
                     className="max-w-full max-h-[260px] md:max-h-full object-contain"
                   />
