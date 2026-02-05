@@ -35,7 +35,8 @@ export default function AdminLogin() {
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
             <img
-              src="/src/assets/img/XCAIL-TECH-LOGO-SF.png"
+              src="/media/logos/xcail-logo.png"
+
               alt="XCAIL Technologies"
               className="h-12 w-auto"
             />
