@@ -72,7 +72,7 @@ export default function AdminLogin() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 disabled={loading}
-                placeholder="admin@xcail.com"
+                placeholder="Correo electrónico"
                 className="w-full px-3 py-2 border rounded-md bg-background disabled:opacity-50"
               />
             </div>
