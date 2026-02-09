@@ -165,8 +165,8 @@ Corre en: `http://localhost:3001`
 
 ## 🔐 Panel Administrativo
 
-- **URL local:** `http://localhost:5173/admin/login`
-- **Contraseña:** `xcail2026`
+-
+- 
 
 ### Funcionalidades del Admin
 
