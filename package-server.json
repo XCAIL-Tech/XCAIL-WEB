@@ -1,0 +1,11 @@
+﻿{
+  "name": "xcail-notify-server",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.cjs"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3"
+  }
+}
