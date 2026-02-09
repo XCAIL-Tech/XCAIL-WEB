@@ -18,6 +18,9 @@ export function About() {
 
             <p className="text-sm text-muted-foreground italic mt-6">
               Carlos Ezequiel Leiva — Fundador y Director General (CEO)
+              <br />
+              Responsable de la visión estratégica, el diseño tecnológico
+              y el desarrollo institucional de XCAIL Technologies.
             </p>
           </div>
 
@@ -29,14 +32,17 @@ export function About() {
             </h2>
 
             <p className="text-lg text-muted-foreground">
-              Empresa de innovación tecnológica enfocada en el desarrollo de
-              plataformas digitales y sistemas de información basados en datos.
+              XCAIL Technologies es una empresa de innovación tecnológica
+              especializada en el desarrollo de plataformas digitales
+              y sistemas de información basados en datos, orientados a
+              contextos institucionales y organizacionales.
             </p>
 
             <p className="text-muted-foreground mt-4">
-              Diseñamos soluciones tecnológicas con foco en la gobernanza del
-              dato, la escalabilidad y la resolución de problemáticas complejas
-              en entornos institucionales y productivos.
+              Diseñamos soluciones confiables, escalables y sostenibles,
+              priorizando la gobernanza del dato, la integridad de la
+              información y la evolución controlada de los sistemas,
+              con una visión de impacto y adopción a largo plazo.
             </p>
           </div>
         </div>
@@ -49,8 +55,9 @@ export function About() {
               Desarrollo de Software
             </h3>
             <p className="text-sm text-muted-foreground">
-              Plataformas digitales diseñadas con arquitecturas escalables,
-              mantenibles y orientadas a evolución continua.
+              Diseño y desarrollo de plataformas digitales con
+              arquitecturas escalables, mantenibles y preparadas
+              para su evolución continua en entornos reales.
             </p>
           </div>
 
@@ -59,8 +66,9 @@ export function About() {
               Inteligencia Artificial
             </h3>
             <p className="text-sm text-muted-foreground">
-              Modelos de análisis y automatización aplicados a contextos reales
-              de decisión y uso estratégico de la información.
+              Aplicación de modelos de análisis y automatización
+              en contextos de decisión, con uso estratégico
+              de la información y criterios de validación institucional.
             </p>
           </div>
 
@@ -69,8 +77,9 @@ export function About() {
               Sistemas de Información
             </h3>
             <p className="text-sm text-muted-foreground">
-              Diseño de sistemas de información orientados a análisis agregado,
-              trazabilidad y lectura contextual de datos.
+              Diseño de sistemas orientados al análisis agregado,
+              la trazabilidad de datos y la lectura contextual
+              en organizaciones complejas.
             </p>
           </div>
 
@@ -79,8 +88,9 @@ export function About() {
               Arquitectura y Gobernanza
             </h3>
             <p className="text-sm text-muted-foreground">
-              Enfoque técnico centrado en la gobernanza del dato, la integridad
-              de la información y la evolución controlada de sistemas.
+              Enfoque técnico centrado en la gobernanza del dato,
+              la integridad de la información y la evolución
+              controlada de sistemas a nivel institucional.
             </p>
           </div>
 
