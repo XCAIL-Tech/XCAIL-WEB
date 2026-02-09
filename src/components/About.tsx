@@ -19,8 +19,7 @@ export function About() {
             <p className="text-sm text-muted-foreground italic mt-6">
               Carlos Ezequiel Leiva — Fundador y Director General (CEO)
               <br />
-              Responsable de la visión estratégica, el diseño tecnológico
-              y el desarrollo institucional de XCAIL Technologies.
+              Responsable de la visión y el desarrollo tecnológico de XCAIL Technologies.
             </p>
           </div>
 
