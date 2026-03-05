@@ -49,12 +49,10 @@ export function About() {
 
           <div className="bg-muted/50 border rounded-lg p-6 flex flex-col text-center sm:text-left">
             <h3 className="text-lg font-medium mb-2">
-              Desarrollo de Software
+              Ingeniería de Software
             </h3>
             <p className="text-sm text-muted-foreground">
-              Diseño y desarrollo de plataformas digitales con
-              arquitecturas escalables, mantenibles y preparadas
-              para su evolución continua en entornos reales.
+              Arquitecturas escalables y resilientes, diseñadas para operar con solvencia en entornos de gran demanda y escala.
             </p>
           </div>
 
@@ -63,34 +61,27 @@ export function About() {
               Inteligencia Artificial
             </h3>
             <p className="text-sm text-muted-foreground">
-              Aplicación de modelos de análisis y automatización
-              en contextos de decisión, con uso estratégico
-              de la información y criterios de validación institucional.
+              Modelos analíticos orientados a la toma de decisiones, bajo estrictos marcos de validación y ética de datos.
             </p>
           </div>
 
           <div className="bg-muted/50 border rounded-lg p-6 flex flex-col text-center sm:text-left">
             <h3 className="text-lg font-medium mb-2">
-              Sistemas de Información
+              Analítica Avanzada
             </h3>
             <p className="text-sm text-muted-foreground">
-              Diseño de sistemas orientados al análisis agregado,
-              la trazabilidad de datos y la lectura contextual
-              en organizaciones complejas.
+              Sistemas preparados para el análisis masivo de datos, garantizando trazabilidad integral e indicadores de impacto.
             </p>
           </div>
 
           <div className="bg-muted/50 border rounded-lg p-6 flex flex-col text-center sm:text-left">
             <h3 className="text-lg font-medium mb-2">
-              Arquitectura y Gobernanza
+              Gobernanza de Datos
             </h3>
             <p className="text-sm text-muted-foreground">
-              Enfoque técnico centrado en la gobernanza del dato,
-              la integridad de la información y la evolución
-              controlada de sistemas a nivel institucional.
+              Protocolos de integridad y seguridad avanzada, asegurando el cumplimiento de estándares institucionales y regulatorios.
             </p>
           </div>
-
         </div>
       </div>
     </section>
