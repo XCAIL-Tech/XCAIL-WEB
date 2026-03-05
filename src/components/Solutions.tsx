@@ -37,7 +37,8 @@ export function Solutions() {
             {/* Texto institucional */}
             <div className="space-y-5 text-center md:text-left">
               <p className="text-lg text-muted-foreground">
-                Ecosistema de Inteligencia Artificial Generativa orientado a la generación de evidencia y la optimización del acompañamiento en la neurodiversidad.
+                Ecosistema de Inteligencia Artificial Generativa orientado a la 
+                generación de evidencia y la optimización del acompañamiento en la neurodiversidad.
               </p>
 
               <p className="text-muted-foreground">
