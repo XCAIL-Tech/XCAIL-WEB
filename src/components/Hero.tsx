@@ -58,7 +58,7 @@ export function Hero() {
               font-semibold
             "
           >
-            <a href="#reconocimientos">Reconocimientos institucionales</a>
+            <a href="#reconocimientos">Reconocimientos</a>
           </Button>
         </div>
       </div>
