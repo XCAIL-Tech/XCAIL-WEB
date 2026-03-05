@@ -47,39 +47,39 @@ export function About() {
         {/* Capacidades */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-          <div className="bg-muted/50 border rounded-lg p-6 flex flex-col text-center sm:text-left">
+          <div className="bg-muted/50 border rounded-lg p-6 flex flex-col text-center">
             <h3 className="text-lg font-medium mb-2">
               Ingeniería de Software
             </h3>
             <p className="text-sm text-muted-foreground">
-              Arquitecturas escalables y resilientes, diseñadas para operar con solvencia en entornos de gran demanda y escala.
+              Desarrollo de arquitecturas escalables y resilientes, diseñadas para operar con solvencia en entornos de gran demanda, alta disponibilidad y evolución tecnológica continua.
             </p>
           </div>
 
-          <div className="bg-muted/50 border rounded-lg p-6 flex flex-col text-center sm:text-left">
+          <div className="bg-muted/50 border rounded-lg p-6 flex flex-col text-center">
             <h3 className="text-lg font-medium mb-2">
               Inteligencia Artificial
             </h3>
             <p className="text-sm text-muted-foreground">
-              Modelos analíticos orientados a la toma de decisiones, bajo estrictos marcos de validación y ética de datos.
+              Implementación de modelos analíticos orientados a la toma de decisiones estratégicas, bajo estrictos marcos de validación institucional, ética de datos y procesos automatizados.
             </p>
           </div>
 
-          <div className="bg-muted/50 border rounded-lg p-6 flex flex-col text-center sm:text-left">
+          <div className="bg-muted/50 border rounded-lg p-6 flex flex-col text-center">
             <h3 className="text-lg font-medium mb-2">
               Analítica Avanzada
             </h3>
             <p className="text-sm text-muted-foreground">
-              Sistemas preparados para el análisis masivo de datos, garantizando trazabilidad integral e indicadores de impacto.
+              Sistemas preparados para el análisis masivo de información, garantizando trazabilidad integral, lectura contextual de datos e indicadores clave de alto impacto poblacional.
             </p>
           </div>
 
-          <div className="bg-muted/50 border rounded-lg p-6 flex flex-col text-center sm:text-left">
+          <div className="bg-muted/50 border rounded-lg p-6 flex flex-col text-center">
             <h3 className="text-lg font-medium mb-2">
               Gobernanza de Datos
             </h3>
             <p className="text-sm text-muted-foreground">
-              Protocolos de integridad y seguridad avanzada, asegurando el cumplimiento de estándares institucionales y regulatorios.
+              Protocolos de integridad y seguridad avanzada, asegurando el cumplimiento de estándares institucionales, marcos regulatorios internacionales y la gestión responsable de activos digitales.
             </p>
           </div>
         </div>
