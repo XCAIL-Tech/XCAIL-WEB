@@ -31,17 +31,15 @@ export function About() {
             </h2>
 
             <p className="text-lg text-muted-foreground">
-              XCAIL Technologies es una empresa de innovación tecnológica
-              especializada en el desarrollo de plataformas digitales
-              y sistemas de información basados en datos, orientados a
-              contextos institucionales y organizacionales.
+              XCAIL Technologies es una empresa de innovación tecnológica orientada al desarrollo de 
+              sistemas de información que integran **modelos de lenguaje de última generación (LLMs)** para potenciar la capacidad de análisis en contextos institucionales.
             </p>
 
             <p className="text-muted-foreground mt-4">
-              Diseñamos soluciones confiables, escalables y sostenibles,
-              priorizando la gobernanza del dato, la integridad de la
-              información y la evolución controlada de los sistemas,
-              con una visión de impacto y adopción a largo plazo.
+              Nuestro enfoque combina la **Inteligencia Artificial Generativa** con arquitecturas robustas, 
+              asegurando la gobernanza del dato y la integridad de la información. Diseñamos sistemas 
+              preparados para una evolución controlada, permitiendo que la tecnología se adapte a 
+              entornos de alta complejidad con una visión de impacto y adopción a largo plazo.
             </p>
           </div>
         </div>

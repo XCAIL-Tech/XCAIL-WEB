@@ -10,14 +10,14 @@ export function Solutions() {
         <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">
             <span className="bg-gradient-to-b from-[#00BFFF] to-[#0099CC] text-transparent bg-clip-text">
-              Producto
+              Producto tecnológico:
             </span>{" "}
-            tecnológico
+            AsisTEA
           </h2>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Plataforma digital desarrollada por XCAIL para abordar problemáticas
-            complejas en contextos institucionales y de acompañamiento.
+            Ecosistema de Inteligencia Artificial Generativa orientado a la transformación de 
+            datos cualitativos en evidencia para el apoyo integral de la neurodiversidad.
           </p>
         </div>
 
@@ -37,23 +37,22 @@ export function Solutions() {
             {/* Texto institucional */}
             <div className="space-y-5 text-center md:text-left">
               <p className="text-lg text-muted-foreground">
-                AsisTEA es una plataforma digital inteligente orientada al
-                acompañamiento, organización y análisis de información en
-                contextos vinculados al Trastorno del Espectro Autista (TEA).
+                Ecosistema de Inteligencia Artificial Generativa orientado a la generación de evidencia y la optimización del acompañamiento en la neurodiversidad.
               </p>
 
               <p className="text-muted-foreground">
-                Está diseñada para ser utilizada por familias, profesionales,
-                instituciones y organismos que requieren herramientas claras,
-                escalables y basadas en datos para mejorar la toma de decisiones,
-                el seguimiento y la planificación de acciones.
+                AsisTEA integra modelos de lenguaje de última generación (LLMs) para transformar la 
+                complejidad de los registros heterogéneos en activos de información estructurada. 
+                Nuestra arquitectura permite una supervisión técnica de alta precisión, garantizando 
+                trazabilidad y soporte basado en datos para familias, profesionales y organizaciones de 
+                habla hispana.
               </p>
 
               <p className="text-muted-foreground">
-                La solución combina experiencia de usuario accesible, criterios
-                de gobernanza del dato y arquitectura tecnológica preparada para
-                su adopción en entornos institucionales y sistemas de mayor
-                escala.
+                La plataforma actúa como un motor de inteligencia estratégica, facilitando indicadores 
+                clave para la toma de decisiones en salud, educación y desarrollo social. Nuestra 
+                infraestructura está preparada para integrarse en sistemas prestacionales de gran escala, 
+                fortaleciendo la planificación de acciones con impacto poblacional en múltiples regiones.
               </p>
 
               {/* CTAs */}
