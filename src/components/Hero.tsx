@@ -18,13 +18,13 @@ export function Hero() {
         {/* Descripción principal */}
         <p className="text-xl text-muted-foreground">
           Empresa de innovación tecnológica enfocada en el desarrollo de
-          plataformas digitales y sistemas de información <span className="font-bold text-foreground">potenciados por Inteligencia Artificial Generativa</span>.
+          plataformas digitales y sistemas de información potenciados por Inteligencia Artificial Generativa.
         </p>
 
         {/* Descripción secundaria */}
         <p className="text-base text-muted-foreground max-w-3xl mx-auto">
           Diseñamos soluciones tecnológicas con foco en la gobernanza del dato,
-          la escalabilidad y la resolución de problemáticas complejas <span className="font-bold text-foreground">mediante el uso estratégico de modelos de lenguaje (LLMs)</span>.
+          la escalabilidad y la resolución de problemáticas complejas mediante el uso estratégico de modelos de lenguaje (LLMs).
         </p>
 
         {/* CTAs */}
