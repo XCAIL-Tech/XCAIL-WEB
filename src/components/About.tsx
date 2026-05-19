@@ -19,67 +19,89 @@ export function About() {
             <p className="text-sm text-muted-foreground italic mt-6">
               Carlos Ezequiel Leiva — Fundador y Director General (CEO)
               <br />
-              Responsable de la visión y el desarrollo tecnológico de XCAIL Technologies.
+              Responsable de la visión y el desarrollo tecnológico de
+              XCAIL Technologies.
             </p>
           </div>
 
           {/* Sobre XCAIL */}
           <div className="bg-muted/50 border rounded-lg p-6 flex flex-col justify-center text-center md:text-left h-full">
             <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-              <span className="text-[#0099CC]">Sobre</span>{" "}
+              <span className="text-[#0099CC]">Sobre</span>
+              {" "}
               XCAIL Technologies
             </h2>
 
             <p className="text-lg text-muted-foreground">
-              XCAIL Technologies es una empresa de innovación tecnológica orientada al desarrollo de 
-              sistemas de información que integran modelos de lenguaje de última generación (LLMs) para potenciar la capacidad de análisis en contextos institucionales.
+              XCAIL Technologies es una startup de Inteligencia Artificial
+              enfocada en el desarrollo de productos tecnológicos propios
+              impulsados por modelos de lenguaje de última generación
+              (LLMs), orientados a neurodiversidad, salud y toma de
+              decisiones basadas en datos.
             </p>
 
             <p className="text-muted-foreground mt-4">
-              Nuestro enfoque combina la Inteligencia Artificial Generativa con arquitecturas robustas, 
-              asegurando la gobernanza del dato y la integridad de la información. Diseñamos sistemas 
-              preparados para una evolución controlada, permitiendo que la tecnología se adapte a 
-              entornos de alta complejidad con una visión de impacto y adopción a largo plazo.
+              Nuestro enfoque combina Inteligencia Artificial Generativa,
+              arquitectura cloud escalable y gobernanza del dato para
+              construir plataformas tecnológicas preparadas para crecer
+              en entornos de alta complejidad, con foco en adopción,
+              generación de evidencia e impacto a largo plazo.
             </p>
           </div>
         </div>
 
-        {/* Capacidades */}
+        {/* Capacidades tecnológicas */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
+          {/* Ingeniería de Software */}
           <div className="bg-muted/50 border rounded-lg p-6 flex flex-col text-center">
             <h3 className="text-lg font-medium mb-2">
               Ingeniería de Software
             </h3>
+
             <p className="text-sm text-muted-foreground">
-              Desarrollo de arquitecturas escalables y resilientes, diseñadas para operar con solvencia en entornos de gran demanda, alta disponibilidad y evolución tecnológica continua.
+              Arquitecturas escalables y resilientes diseñadas para
+              soportar productos de Inteligencia Artificial con alta
+              disponibilidad, trazabilidad y evolución continua.
             </p>
           </div>
 
+          {/* Inteligencia Artificial */}
           <div className="bg-muted/50 border rounded-lg p-6 flex flex-col text-center">
             <h3 className="text-lg font-medium mb-2">
               Inteligencia Artificial
             </h3>
+
             <p className="text-sm text-muted-foreground">
-              Implementación de modelos analíticos orientados a la toma de decisiones estratégicas, bajo estrictos marcos de validación institucional, ética de datos y procesos automatizados.
+              Integración de modelos de lenguaje (LLMs) y sistemas de
+              IA generativa aplicados a procesos de apoyo, análisis
+              contextual y generación de evidencia.
             </p>
           </div>
 
+          {/* Analítica Avanzada */}
           <div className="bg-muted/50 border rounded-lg p-6 flex flex-col text-center">
             <h3 className="text-lg font-medium mb-2">
               Analítica Avanzada
             </h3>
+
             <p className="text-sm text-muted-foreground">
-              Sistemas preparados para el análisis masivo de información, garantizando trazabilidad integral, lectura contextual de datos e indicadores clave de alto impacto poblacional.
+              Procesamiento y estructuración de datos complejos para
+              generar indicadores e información accionable en contextos
+              de alta complejidad.
             </p>
           </div>
 
+          {/* Gobernanza de Datos */}
           <div className="bg-muted/50 border rounded-lg p-6 flex flex-col text-center">
             <h3 className="text-lg font-medium mb-2">
               Gobernanza de Datos
             </h3>
+
             <p className="text-sm text-muted-foreground">
-              Protocolos de integridad y seguridad avanzada, asegurando el cumplimiento de estándares institucionales, marcos regulatorios internacionales y la gestión responsable de activos digitales.
+              Infraestructura y protocolos orientados a integridad,
+              trazabilidad y gestión responsable de datos en entornos
+              institucionales.
             </p>
           </div>
         </div>

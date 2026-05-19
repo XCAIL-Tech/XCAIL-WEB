@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Menu } from "lucide-react";
 import { buttonVariants } from "./ui/button";
-import { ModeToggle } from "./mode-toggle";
 import {
   Sheet,
   SheetContent,
@@ -32,7 +31,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-white dark:border-b-slate-700 dark:bg-background">
+    <header className="sticky top-0 z-40 w-full border-b border-slate-800 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <NavigationMenu className="mx-auto">
         <NavigationMenuList className="container flex h-14 w-screen justify-between px-4">
 
@@ -49,8 +48,6 @@ export function Navbar() {
 
           {/* Mobile */}
           <span className="flex md:hidden items-center gap-2">
-            <ModeToggle />
-
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger className="px-2">
                 <Menu
@@ -90,16 +87,14 @@ export function Navbar() {
               <a
                 key={route.href}
                 href={route.href}
-                className={`text-[17px] ${buttonVariants({ variant: "ghost" })}`}
+                className={`text-[17px] ${buttonVariants({
+                  variant: "ghost",
+                })}`}
               >
                 {route.label}
               </a>
             ))}
           </nav>
-
-          <div className="hidden md:flex gap-2">
-            <ModeToggle />
-          </div>
 
         </NavigationMenuList>
       </NavigationMenu>

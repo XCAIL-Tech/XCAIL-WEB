@@ -10,7 +10,7 @@ export function Footer() {
           <strong>© 2026 </strong>
           <strong className="text-[#00BFFF]">XCAIL</strong>
           <strong> Technologies</strong>
-          {" "}— Tecnología con propósito
+          {" "}— Tecnología con Propósito
         </p>
 
         {/* Iconos */}

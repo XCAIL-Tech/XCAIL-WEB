@@ -1,20 +1,32 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 export function Awards() {
   return (
-    <section id="reconocimientos" className="container py-24 sm:py-32">
+    <section
+      id="reconocimientos"
+      className="container py-24 sm:py-32"
+    >
 
       {/* Título */}
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           <span className="bg-gradient-to-r from-[#00BFFF] to-[#0099CC] text-transparent bg-clip-text">
             Validaciones
-          </span>{" "}
+          </span>
+          {" "}
           Institucionales
         </h2>
+
         <p className="text-muted-foreground max-w-3xl mx-auto">
-          El trabajo de XCAIL Technologies ha sido evaluado y reconocido por instituciones
-          nacionales e internacionales, validando su enfoque tecnológico y su impacto.
+          El trabajo de XCAIL Technologies y el desarrollo de sus
+          productos de Inteligencia Artificial han sido reconocidos por
+          instituciones nacionales e internacionales, validando su
+          enfoque tecnológico e impacto.
         </p>
       </div>
 
@@ -26,17 +38,22 @@ export function Awards() {
             <CardTitle className="text-2xl">
               Cámara de Comercio Argentino-Británica (BritCham)
             </CardTitle>
+
             <p className="text-sm text-muted-foreground">
-              Mención Especial — Diversidad, Equidad e Inclusión (DEI) · 2025
+              Mención Especial — Diversidad, Equidad e Inclusión (DEI)
+              {" "}
+              · 2025
             </p>
           </CardHeader>
 
           <CardContent className="space-y-6">
             <p className="text-muted-foreground">
-              BritCham Argentina distingue iniciativas con impacto verificable y proyección
-              institucional. XCAIL Technologies recibió una Mención Especial en la categoría
-              Diversidad, Equidad e Inclusión (DEI) por el desarrollo de AsisTEA, validando su
-              enfoque tecnológico, humano y su capacidad de adopción en entornos organizacionales.
+              BritCham Argentina distingue iniciativas con impacto
+              verificable y proyección institucional. XCAIL Technologies
+              recibió una Mención Especial en la categoría Diversidad,
+              Equidad e Inclusión (DEI) por el desarrollo de AsisTEA,
+              validando su enfoque tecnológico, impacto social y
+              potencial de escalabilidad.
             </p>
 
             {/* Galería institucional 2x2 */}
@@ -51,8 +68,10 @@ export function Awards() {
                     className="max-w-full max-h-[260px] md:max-h-full object-contain"
                   />
                 </div>
+
                 <figcaption className="text-xs text-muted-foreground">
-                  Certificado oficial — Mención Especial en Diversidad, Equidad e Inclusión (DEI).
+                  Certificado oficial — Mención Especial en Diversidad,
+                  Equidad e Inclusión (DEI).
                 </figcaption>
               </figure>
 
@@ -65,6 +84,7 @@ export function Awards() {
                     className="max-w-full max-h-[260px] md:max-h-full object-contain"
                   />
                 </div>
+
                 <figcaption className="text-xs text-muted-foreground">
                   Ceremonia BritCham Argentina 2025 — Embajada Británica.
                 </figcaption>
@@ -79,8 +99,10 @@ export function Awards() {
                     className="max-w-full max-h-[260px] md:max-h-full object-contain"
                   />
                 </div>
+
                 <figcaption className="text-xs text-muted-foreground">
-                  Equipo XCAIL — registro institucional con certificado y distinción.
+                  Equipo XCAIL — registro institucional con certificado
+                  y distinción.
                 </figcaption>
               </figure>
 
@@ -93,11 +115,12 @@ export function Awards() {
                     className="max-w-full max-h-[260px] md:max-h-full object-contain"
                   />
                 </div>
+
                 <figcaption className="text-xs text-muted-foreground">
-                  Momento de entrega del reconocimiento en la Embajada Británica.
+                  Momento de entrega del reconocimiento en la Embajada
+                  Británica.
                 </figcaption>
               </figure>
-
             </div>
           </CardContent>
         </Card>
@@ -106,8 +129,10 @@ export function Awards() {
         <Card className="bg-muted/50">
           <CardHeader>
             <CardTitle className="text-2xl">
-              Premios Sadosky — Cámara de la Industria Argentina del Software (CESSI)
+              Premios Sadosky — Cámara de la Industria Argentina del
+              Software (CESSI)
             </CardTitle>
+
             <p className="text-sm text-muted-foreground">
               Finalista en dos categorías · 2025
             </p>
@@ -115,11 +140,12 @@ export function Awards() {
 
           <CardContent className="space-y-6">
             <p className="text-muted-foreground">
-              Los Premios Sadosky constituyen el reconocimiento más relevante del sector
-              tecnológico argentino. En su 21° edición, XCAIL fue finalista en dos categorías
-              simultáneas — Innovación Transformadora e Impacto Digital — destacándose por
-              su enfoque tecnológico, su impacto verificable y su capacidad de escalar en
-              entornos institucionales.
+              Los Premios Sadosky constituyen el reconocimiento más
+              relevante del sector tecnológico argentino. En su 21°
+              edición, XCAIL fue finalista en dos categorías simultáneas
+              — Innovación Transformadora e Impacto Digital —
+              destacándose por su enfoque tecnológico, impacto
+              verificable y potencial de innovación y escalabilidad.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -128,6 +154,7 @@ export function Awards() {
                 alt="Certificado Innovación Transformadora"
                 className="rounded-lg border w-full object-contain"
               />
+
               <img
                 src="/media/reconocimientos/sadosky/certificado-impacto-digital.png"
                 alt="Certificado Impacto Digital"
@@ -136,7 +163,6 @@ export function Awards() {
             </div>
           </CardContent>
         </Card>
-
       </div>
     </section>
   );

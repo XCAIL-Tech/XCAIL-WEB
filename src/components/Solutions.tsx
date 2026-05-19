@@ -3,63 +3,72 @@ import { Button } from "./ui/button";
 
 export function Solutions() {
   return (
-    <section id="producto" className="container py-20 sm:py-28">
+    <section
+      id="producto"
+      className="container py-20 sm:py-28"
+    >
       <div className="space-y-14">
 
-        {/* Título institucional */}
+        {/* Título */}
         <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">
             <span className="bg-gradient-to-b from-[#00BFFF] to-[#0099CC] text-transparent bg-clip-text">
-              Producto tecnológico:
-            </span>{" "}
+              Producto impulsado por IA:
+            </span>
+            {" "}
             AsisTEA
           </h2>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ecosistema de Inteligencia Artificial Generativa orientado a la transformación de 
-            datos cualitativos en evidencia para el apoyo integral de la neurodiversidad.
+            Plataforma de Inteligencia Artificial Generativa diseñada para
+            transformar información compleja en evidencia, apoyo y toma de
+            decisiones escalables en neurodiversidad.
           </p>
         </div>
 
-        {/* Card principal del producto */}
+        {/* Card principal */}
         <Card className="bg-muted/50 border">
           <CardContent className="p-8 grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 items-center">
 
-            {/* Logo AsisTEA */}
+            {/* Logo */}
             <div className="flex justify-center">
               <img
                 src="/media/logos/asistea-logo.png"
-                alt="AsisTEA - Plataforma desarrollada por XCAIL"
+                alt="AsisTEA - Plataforma de Inteligencia Artificial"
                 className="max-w-[260px] w-full object-contain"
               />
             </div>
 
-            {/* Texto institucional */}
+            {/* Texto */}
             <div className="space-y-5 text-center md:text-left">
+
               <p className="text-lg text-muted-foreground">
-                Ecosistema de Inteligencia Artificial Generativa orientado a la 
-                generación de evidencia y la optimización del acompañamiento en la neurodiversidad.
+                AsisTEA es una plataforma de Inteligencia Artificial
+                Generativa desarrollada por XCAIL Technologies para apoyar a
+                familias, profesionales e instituciones mediante herramientas
+                basadas en evidencia y procesamiento avanzado de información.
               </p>
 
               <p className="text-muted-foreground">
-                AsisTEA integra modelos de lenguaje de última generación (LLMs) para transformar la 
-                complejidad de los registros heterogéneos en activos de información estructurada. 
-                Nuestra arquitectura permite una supervisión técnica de alta precisión, garantizando 
-                trazabilidad y soporte basado en datos para familias, profesionales y organizaciones de 
-                habla hispana.
+                La plataforma integra modelos de lenguaje de última generación
+                (LLMs) para transformar registros heterogéneos y datos
+                cualitativos en información estructurada, trazable y accionable.
+                Su arquitectura permite centralizar información, generar
+                acompañamiento personalizado y fortalecer la toma de decisiones
+                mediante análisis asistido por IA.
               </p>
 
               <p className="text-muted-foreground">
-                La plataforma actúa como un motor de inteligencia estratégica, facilitando indicadores 
-                clave para la toma de decisiones en salud, educación y desarrollo social. Nuestra 
-                infraestructura está preparada para integrarse en sistemas prestacionales de gran escala, 
-                fortaleciendo la planificación de acciones con impacto poblacional en múltiples regiones.
+                Diseñada con una arquitectura escalable sobre infraestructura
+                cloud, AsisTEA evoluciona como un ecosistema tecnológico capaz
+                de integrarse progresivamente en contextos de salud,
+                educación y apoyo institucional en mercados de habla hispana.
               </p>
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-4 pt-6 justify-center md:justify-start">
 
-                {/* Conocer plataforma */}
+                {/* Plataforma */}
                 <Button
                   className="
                     bg-transparent
@@ -80,7 +89,7 @@ export function Solutions() {
                   </a>
                 </Button>
 
-                {/* Contacto institucional */}
+                {/* Contacto */}
                 <Button
                   className="
                     bg-transparent
@@ -93,7 +102,7 @@ export function Solutions() {
                   asChild
                 >
                   <a href="#contacto">
-                    Contacto institucional
+                    Contacto
                   </a>
                 </Button>
 

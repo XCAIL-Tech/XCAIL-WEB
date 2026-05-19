@@ -11,20 +11,25 @@ export function Hero() {
         <h1 className="text-5xl md:text-6xl font-bold leading-tight">
           <span className="bg-gradient-to-r from-[#D4AF37] to-[#fca311] text-transparent bg-clip-text">
             XCAIL
-          </span>{" "}
-          Technologies
+          </span>
+          <span className="ml-1">
+            Technologies
+          </span>
         </h1>
 
         {/* Descripción principal */}
         <p className="text-xl text-muted-foreground">
-          Empresa de innovación tecnológica enfocada en el desarrollo de
-          plataformas digitales y sistemas de información potenciados por Inteligencia Artificial Generativa.
+          Startup de Inteligencia Artificial enfocada en el desarrollo de
+          productos tecnológicos escalables para neurodiversidad, salud y
+          toma de decisiones basadas en datos.
         </p>
 
         {/* Descripción secundaria */}
         <p className="text-base text-muted-foreground max-w-3xl mx-auto">
-          Diseñamos soluciones tecnológicas con foco en la gobernanza del dato,
-          la escalabilidad y la resolución de problemáticas complejas mediante el uso estratégico de modelos de lenguaje (LLMs).
+          Desarrollamos productos tecnológicos propios impulsados por modelos
+          de lenguaje de última generación (LLMs), orientados a transformar
+          datos complejos en sistemas de apoyo, generación de evidencia y
+          toma de decisiones escalables.
         </p>
 
         {/* CTAs */}
