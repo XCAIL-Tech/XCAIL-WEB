@@ -20,8 +20,7 @@ export function Hero() {
         {/* Descripción principal */}
         <p className="text-xl text-muted-foreground">
           Startup de Inteligencia Artificial enfocada en el desarrollo de
-          productos tecnológicos escalables para neurodiversidad, salud y
-          toma de decisiones basadas en datos.
+          productos tecnológicos escalables para neurodiversidad, bienestar y sistemas de apoyo basados en evidencia
         </p>
 
         {/* Descripción secundaria */}
