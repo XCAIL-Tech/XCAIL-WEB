@@ -32,9 +32,10 @@ export function Contact() {
     // impedir que el mensaje llegue por mail.
     try {
       // Vercel Serverless Function en api/notify.js — mismo dominio, no
-      // depende de ningún backend externo (Render quedó deprecado).
-      const NOTIFY_URL = import.meta.env.VITE_NOTIFY_URL || "/api/notify";
-      const res = await fetch(NOTIFY_URL, {
+      // depende de ningún backend externo (Render quedó deprecado). Sin
+      // indirección por env var: si alguna vez existió VITE_NOTIFY_URL
+      // apuntando al Render viejo, no debe poder pisar esto.
+      const res = await fetch("/api/notify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData }),
