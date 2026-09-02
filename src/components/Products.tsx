@@ -5,7 +5,6 @@ import {
   ScanLine, WifiOff, Eye, Volume2, Smartphone,
   Siren, TrafficCone, TimerReset, Cloud,
 } from "lucide-react";
-import { TechBadge } from "./TechBadge";
 import { useI18n } from "@/lib/i18n";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import type { LucideIcon } from "lucide-react";
@@ -238,16 +237,6 @@ export function Products() {
                 <FeatureCard key={f.title} title={f.title} desc={f.desc} icon={ASISTEA_ICONS[i] ?? Sparkles} accent="#00BFFF" />
               ))}
             </div>
-
-            {/* Tech stack */}
-            <div className="flex flex-col sm:flex-row sm:items-center gap-y-4 gap-x-6 pt-6 border-t border-[#164272]/40">
-              <p className="text-xs font-bold text-[#00BFFF]/60 uppercase tracking-widest shrink-0">
-                {p.asistea.tech_title}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {p.asistea.tech_stack.map((t) => <TechBadge key={t} name={t} />)}
-              </div>
-            </div>
           </div>
 
           <div className="border-t border-[#164272]/40" />
@@ -286,16 +275,6 @@ export function Products() {
                 <FeatureCard key={f.title} title={f.title} desc={f.desc} icon={CONNECT_ICONS[i] ?? Cloud} accent="#00BFFF" />
               ))}
             </div>
-
-            {/* Tech stack */}
-            <div className="flex flex-col sm:flex-row sm:items-center gap-y-4 gap-x-6 pt-6 border-t border-[#164272]/40">
-              <p className="text-xs font-bold text-[#00BFFF]/60 uppercase tracking-widest shrink-0">
-                {p.ohm.tech_title}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {p.ohm.tech_stack.map((t) => <TechBadge key={t} name={t} />)}
-              </div>
-            </div>
           </div>
 
           <div className="border-t border-[#164272]/40" />
@@ -333,16 +312,6 @@ export function Products() {
               {p.stroke.features.map((f, i) => (
                 <FeatureCard key={f.title} title={f.title} desc={f.desc} icon={STROKE_ICONS[i] ?? Cloud} accent="#fca311" />
               ))}
-            </div>
-
-            {/* Tech stack */}
-            <div className="flex flex-col sm:flex-row sm:items-center gap-y-4 gap-x-6 pt-6 border-t border-[#164272]/40">
-              <p className="text-xs font-bold text-[#fca311]/60 uppercase tracking-widest shrink-0">
-                {p.stroke.tech_title}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {p.stroke.tech_stack.map((t) => <TechBadge key={t} name={t} />)}
-              </div>
             </div>
           </div>
 

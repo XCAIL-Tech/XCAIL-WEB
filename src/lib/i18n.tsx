@@ -64,8 +64,6 @@ const es = {
         { title: "Reportes y evolución", desc: "Historial centralizado del progreso." },
         { title: "Personalización adaptativa", desc: "Herramientas ajustadas a diferentes necesidades." },
       ],
-      tech_title: "Impulsado por infraestructura cloud e inteligencia artificial",
-      tech_stack: ["Gemini API", "Firebase", "Cloud Storage", "Cloud Functions", "Google Cloud"],
       cta: "Probar AsisTEA Beta",
       screenshots: [
         { src: "/media/productos/asistea/00_AsisTEA_Portada.png", label: "Portada" },
@@ -90,8 +88,6 @@ const es = {
         { title: "Offline-first", desc: "Las funciones esenciales funcionan sin conexión a internet." },
         { title: "Instalable como app", desc: "Funciona como aplicación (PWA) en cualquier dispositivo, sin tiendas de apps." },
       ],
-      tech_title: "Impulsado por infraestructura cloud",
-      tech_stack: ["Firebase", "Cloud Functions", "MediaPipe (visión on-device)", "Google Cloud"],
       cta: "Conocer INCLUXIA Connect",
       screenshots: [
         { src: "/media/productos/incluxia-connect/00-INCLUXIA_CONNECT_PORTADA.png", label: "Portada" },
@@ -113,8 +109,6 @@ const es = {
         { title: "Semáforo de riesgo", desc: "Traduce la evaluación en un nivel de riesgo claro." },
         { title: "Cronómetro de activación", desc: "Acompaña desde el primer síntoma detectado." },
       ],
-      tech_title: "Construido sobre la misma infraestructura de INCLUXIA",
-      tech_stack: ["Firebase", "Cloud Functions", "Google Cloud"],
       cta: "Conocer INCLUXIA Stroke",
       video_label: "INCLUXIA Stroke",
       video_soon: "En desarrollo hacia su lanzamiento público",
@@ -245,23 +239,6 @@ const es = {
       "Accesibilidad",
       "Plataformas SaaS",
     ],
-    tech_section_title: "Infraestructura preparada para escalar",
-    tech_intro: "XCAIL desarrolla sus productos sobre una arquitectura cloud-native diseñada para ofrecer escalabilidad, disponibilidad y capacidades avanzadas de inteligencia artificial aplicadas al neurodesarrollo y accesibilidad.",
-    tech_groups: [
-      {
-        title: "Inteligencia Artificial",
-        items: ["Gemini API", "Modelos generativos", "Síntesis de voz natural (Cloud TTS)", "Reconocimiento de voz (STT)", "Predicción de texto adaptativa (ML)", "Automatización impulsada por IA"],
-      },
-      {
-        title: "Infraestructura Cloud",
-        items: ["Google Cloud", "Firebase", "Cloud Functions", "Cloud Run", "Cloud Storage", "Arquitectura serverless escalable"],
-      },
-      {
-        title: "Desarrollo de Producto",
-        items: ["React", "TypeScript", "Python", "Interfaces accesibles", "Arquitectura SaaS"],
-      },
-    ],
-    tech_closing: "Arquitectura preparada para soportar crecimiento de usuarios, procesamiento inteligente y evolución continua de productos digitales.",
     stats: [
       { value: "2", label: "Productos en desarrollo" },
       { value: "2025", label: "Año de fundación" },
@@ -429,8 +406,6 @@ const en: typeof es = {
         { title: "Reports & evolution", desc: "Centralized progress history." },
         { title: "Adaptive personalization", desc: "Tools adjusted to different needs." },
       ],
-      tech_title: "Powered by cloud infrastructure and artificial intelligence",
-      tech_stack: ["Gemini API", "Firebase", "Cloud Storage", "Cloud Functions", "Google Cloud"],
       cta: "Try AsisTEA Beta",
       screenshots: [
         { src: "/media/productos/asistea/00_AsisTEA_Portada.png", label: "Cover" },
@@ -455,8 +430,6 @@ const en: typeof es = {
         { title: "Offline-first", desc: "Core features work without an internet connection." },
         { title: "Installable as an app", desc: "Works as an app (PWA) on any device, no app stores needed." },
       ],
-      tech_title: "Powered by cloud infrastructure",
-      tech_stack: ["Firebase", "Cloud Functions", "MediaPipe (on-device vision)", "Google Cloud"],
       cta: "Discover INCLUXIA Connect",
       screenshots: [
         { src: "/media/productos/incluxia-connect/00-INCLUXIA_CONNECT_PORTADA.png", label: "Cover" },
@@ -478,8 +451,6 @@ const en: typeof es = {
         { title: "Risk level indicator", desc: "Translates the assessment into a clear risk level." },
         { title: "Activation timer", desc: "Tracks time from the first detected symptom." },
       ],
-      tech_title: "Built on the same INCLUXIA infrastructure",
-      tech_stack: ["Firebase", "Cloud Functions", "Google Cloud"],
       cta: "Discover INCLUXIA Stroke",
       video_label: "INCLUXIA Stroke",
       video_soon: "In development toward public launch",
@@ -609,23 +580,6 @@ const en: typeof es = {
       "Accessibility",
       "SaaS Platforms",
     ],
-    tech_section_title: "Infrastructure built to scale",
-    tech_intro: "XCAIL builds its products on a cloud-native architecture designed to deliver scalability, availability, and advanced artificial intelligence capabilities applied to neurodevelopment and accessibility.",
-    tech_groups: [
-      {
-        title: "Artificial Intelligence",
-        items: ["Gemini API", "Generative models", "Natural voice synthesis (Cloud TTS)", "Voice recognition (STT)", "Adaptive text prediction (ML)", "AI-driven automation"],
-      },
-      {
-        title: "Cloud Infrastructure",
-        items: ["Google Cloud", "Firebase", "Cloud Functions", "Cloud Run", "Cloud Storage", "Scalable serverless architecture"],
-      },
-      {
-        title: "Product Development",
-        items: ["React", "TypeScript", "Python", "Accessible interfaces", "SaaS architecture"],
-      },
-    ],
-    tech_closing: "Architecture designed to support user growth, intelligent processing, and continuous evolution of digital products.",
     stats: [
       { value: "2", label: "Products in development" },
       { value: "2025", label: "Founded" },

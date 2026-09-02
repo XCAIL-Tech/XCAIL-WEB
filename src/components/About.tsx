@@ -178,38 +178,6 @@ export function About() {
           </div>
         </div>
 
-        {/* ── Infraestructura Cloud Native (3 Columnas) ── */}
-        <div className="glass-card rounded-2xl p-6 lg:p-8 max-w-6xl mx-auto space-y-6">
-          <SectionHeading>{a.tech_section_title}</SectionHeading>
-          <p className="text-sm text-slate-400 leading-relaxed max-w-3xl">{a.tech_intro}</p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-2">
-            {a.tech_groups.map((group, i) => {
-              // Colores de los grupos: Azul (IA), Verde (GCP), Celeste (UI)
-              const color = (["#00BFFF", "#5F33FF", "#3b82f6"] as const)[i];
-              return (
-                <div key={group.title} className="bg-background/40 border border-[#1d5a96]/50 rounded-xl p-5 hover:border-slate-500 transition-colors duration-300">
-                  <p className="text-xs font-bold uppercase tracking-widest mb-4 pb-2 border-b border-[#164272]/40" style={{ color }}>
-                    {group.title}
-                  </p>
-                  <ul className="space-y-2.5">
-                    {group.items.map((item) => (
-                      <li key={item} className="flex items-start gap-2.5 text-xs text-slate-300 leading-snug">
-                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: color }} />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-            })}
-          </div>
-
-          <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider text-center sm:text-left pt-2">
-            {a.tech_closing}
-          </p>
-        </div>
-
       </div>
     </section>
   );
