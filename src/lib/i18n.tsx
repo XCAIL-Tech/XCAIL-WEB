@@ -342,6 +342,8 @@ const es = {
     products_title: "Productos",
     faq: "Preguntas frecuentes",
     company_title: "Empresa",
+    legal_title: "Legal",
+    about_link: "Quiénes somos",
   },
 };
 
@@ -683,6 +685,8 @@ const en: typeof es = {
     products_title: "Products",
     faq: "FAQ",
     company_title: "Company",
+    legal_title: "Legal",
+    about_link: "About us",
   },
 };
 
