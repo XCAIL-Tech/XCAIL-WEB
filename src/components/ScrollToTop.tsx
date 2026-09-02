@@ -1,38 +1,24 @@
 import { useEffect, useState } from "react";
-import { ArrowUpToLine } from "lucide-react";
-import { Button } from "./ui/button";
+import { ArrowUp } from "lucide-react";
 
 export function ScrollToTop() {
-  const [showTopBtn, setShowTopBtn] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 400) {
-        setShowTopBtn(true);
-      } else {
-        setShowTopBtn(false);
-      }
-    });
+    const onScroll = () => setVisible(window.scrollY > 400);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const goToTop = () => {
-    window.scroll({
-      top: 0,
-      left: 0,
-    });
-  };
+  if (!visible) return null;
 
   return (
-    <>
-      {showTopBtn && (
-        <Button
-          onClick={goToTop}
-          className="fixed bottom-4 right-4 opacity-90 shadow-md"
-          size="icon"
-        >
-          <ArrowUpToLine className="h-4 w-4" />
-        </Button>
-      )}
-    </>
+    <button
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      aria-label="Volver arriba"
+      className="fixed bottom-6 right-6 w-10 h-10 rounded-full border border-[#1d5a96] bg-transparent text-slate-400 hover:border-[#00BFFF] hover:text-[#00BFFF] hover:shadow-[0_0_16px_rgba(0,191,255,0.25)] flex items-center justify-center transition-all duration-200 backdrop-blur-sm z-50"
+    >
+      <ArrowUp className="w-4 h-4" />
+    </button>
   );
 }

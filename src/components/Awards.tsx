@@ -1,168 +1,175 @@
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+﻿import { useI18n } from "@/lib/i18n";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { Award, ExternalLink } from "lucide-react";
 
 export function Awards() {
+  const { tr } = useI18n();
+  const a = tr.awards;
+  const { ref, isVisible } = useScrollReveal();
+
   return (
-    <section
-      id="reconocimientos"
-      className="container py-24 sm:py-32"
-    >
+    <section id="awards" className="bg-background relative py-20 sm:py-24">
+      {/* Luz decorativa */}
+      <div className="absolute top-[30%] left-[-10%] w-[35%] h-[35%] bg-[#5f33ff]/5 rounded-full blur-[115px] pointer-events-none" />
 
-      {/* Título */}
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          <span className="bg-gradient-to-r from-[#00BFFF] to-[#0099CC] text-transparent bg-clip-text">
-            Validaciones
-          </span>
-          {" "}
-          Institucionales
-        </h2>
+      <div
+        ref={ref}
+        className={`container mx-auto relative z-10 transition-all duration-700 ease-out ${
+          isVisible ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        {/* Encabezado */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 text-white">
+            <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 text-transparent bg-clip-text">
+              {a.title}
+            </span>
+          </h2>
+          <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">{a.subtitle}</p>
+        </div>
 
-        <p className="text-muted-foreground max-w-3xl mx-auto">
-          El trabajo de XCAIL Technologies y el desarrollo de sus
-          productos de Inteligencia Artificial han sido reconocidos por
-          instituciones nacionales e internacionales, validando su
-          enfoque tecnológico e impacto.
-        </p>
-      </div>
+        <div className="space-y-16 max-w-6xl mx-auto">
 
-      <div className="space-y-12">
+          {/* ══ BRITCHAM ══════════════════════════════════════════════════ */}
+          <div className="glass-card rounded-2xl p-6 lg:p-8 space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#164272]/40 pb-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center">
+                  <Award className="w-5 h-5 text-[#D4AF37]" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-white leading-tight">{a.britcham_title}</h3>
+                  <p className="text-[10px] text-[#D4AF37] font-bold tracking-wide uppercase mt-1 leading-none">{a.britcham_badge}</p>
+                </div>
+              </div>
+            </div>
 
-        {/* BritCham */}
-        <Card className="bg-muted/50">
-          <CardHeader>
-            <CardTitle className="text-2xl">
-              Cámara de Comercio Argentino-Británica (BritCham)
-            </CardTitle>
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">{a.britcham_body}</p>
 
-            <p className="text-sm text-muted-foreground">
-              Mención Especial — Diversidad, Equidad e Inclusión (DEI)
-              {" "}
-              · 2025
-            </p>
-          </CardHeader>
+            {/* Rejilla de fotos oficiales */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-2">
 
-          <CardContent className="space-y-6">
-            <p className="text-muted-foreground">
-              BritCham Argentina distingue iniciativas con impacto
-              verificable y proyección institucional. XCAIL Technologies
-              recibió una Mención Especial en la categoría Diversidad,
-              Equidad e Inclusión (DEI) por el desarrollo de AsisTEA,
-              validando su enfoque tecnológico, impacto social y
-              potencial de escalabilidad.
-            </p>
-
-            {/* Galería institucional 2x2 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-              {/* Certificado DEI */}
-              <figure className="space-y-2 text-center">
-                <div className="w-full rounded-lg border bg-background/40 flex items-center justify-center p-4 md:h-[360px]">
+              <figure className="space-y-2 group">
+                <div className="w-full rounded-xl border border-[#1d5a96] dark:bg-[#071e3d] bg-slate-50 flex items-center justify-center p-4 h-[240px] overflow-hidden transition-all duration-300 group-hover:border-[#00BFFF]/50">
                   <img
                     src="/media/reconocimientos/britcham/certificado-dei.jpg"
                     alt="Certificado oficial BritCham DEI"
-                    className="max-w-full max-h-[260px] md:max-h-full object-contain"
+                    className="max-w-full max-h-full object-contain rounded-lg transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-
-                <figcaption className="text-xs text-muted-foreground">
-                  Certificado oficial — Mención Especial en Diversidad,
-                  Equidad e Inclusión (DEI).
-                </figcaption>
+                <figcaption className="text-[10px] text-slate-400 font-semibold leading-relaxed group-hover:text-white transition-colors">{a.britcham_cert_caption}</figcaption>
               </figure>
 
-              {/* Foto con embajador y directivos */}
-              <figure className="space-y-2 text-center">
-                <div className="w-full rounded-lg border bg-background/40 flex items-center justify-center p-4 md:h-[360px]">
+              <figure className="space-y-2 group">
+                <div className="w-full rounded-xl border border-[#1d5a96] dark:bg-[#071e3d] bg-slate-50 flex items-center justify-center p-4 h-[240px] overflow-hidden transition-all duration-300 group-hover:border-[#00BFFF]/50">
                   <img
                     src="/media/reconocimientos/britcham/foto-embajador-directivos.jpeg"
                     alt="Ceremonia BritCham con embajador británico"
-                    className="max-w-full max-h-[260px] md:max-h-full object-contain"
+                    className="max-w-full max-h-full object-contain rounded-lg transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-
-                <figcaption className="text-xs text-muted-foreground">
-                  Ceremonia BritCham Argentina 2025 — Embajada Británica.
-                </figcaption>
+                <figcaption className="text-[10px] text-slate-400 font-semibold leading-relaxed group-hover:text-white transition-colors">{a.britcham_ceremony_caption}</figcaption>
               </figure>
 
-              {/* Equipo XCAIL */}
-              <figure className="space-y-2 text-center">
-                <div className="w-full rounded-lg border bg-background/40 flex items-center justify-center p-4 md:h-[360px]">
-                  <img
-                    src="/media/reconocimientos/britcham/equipo-premiacion.jpg"
-                    alt="Equipo XCAIL con certificado y distinción"
-                    className="max-w-full max-h-[260px] md:max-h-full object-contain"
-                  />
-                </div>
-
-                <figcaption className="text-xs text-muted-foreground">
-                  Equipo XCAIL — registro institucional con certificado
-                  y distinción.
-                </figcaption>
-              </figure>
-
-              {/* Entrega en embajada */}
-              <figure className="space-y-2 text-center">
-                <div className="w-full rounded-lg border bg-background/40 flex items-center justify-center p-4 md:h-[360px]">
+              <figure className="space-y-2 group">
+                <div className="w-full rounded-xl border border-[#1d5a96] dark:bg-[#071e3d] bg-slate-50 flex items-center justify-center p-4 h-[240px] overflow-hidden transition-all duration-300 group-hover:border-[#00BFFF]/50">
                   <img
                     src="/media/reconocimientos/britcham/entrega-jurado-embajada.jpg"
                     alt="Entrega del reconocimiento en la Embajada Británica"
-                    className="max-w-full max-h-[260px] md:max-h-full object-contain"
+                    className="max-w-full max-h-full object-contain rounded-lg transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
+                <figcaption className="text-[10px] text-slate-400 font-semibold leading-relaxed group-hover:text-white transition-colors">{a.britcham_award_caption}</figcaption>
+              </figure>
 
-                <figcaption className="text-xs text-muted-foreground">
-                  Momento de entrega del reconocimiento en la Embajada
-                  Británica.
-                </figcaption>
+            </div>
+          </div>
+
+          {/* ══ SADOSKY ══════════════════════════════════════════════════ */}
+          <div className="glass-card rounded-2xl p-6 lg:p-8 space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#164272]/40 pb-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center">
+                  <Award className="w-5 h-5 text-[#D4AF37]" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-white leading-tight">{a.sadosky_title}</h3>
+                  <p className="text-[10px] text-[#D4AF37] font-bold tracking-wide uppercase mt-1 leading-none">{a.sadosky_badge}</p>
+                </div>
+              </div>
+            </div>
+
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">{a.sadosky_body}</p>
+
+            {/* Certificados Sadosky */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+              <div className="group rounded-xl border border-[#1d5a96] dark:bg-[#071e3d] bg-slate-50 p-4 flex items-center justify-center h-[280px] overflow-hidden transition-all duration-300 group-hover:border-[#00BFFF]/50">
+                <img
+                  src="/media/reconocimientos/sadosky/certificado-innovacion-transformadora.png"
+                  alt="Certificado Innovación Transformadora — Premios Sadosky 2025"
+                  className="max-w-full max-h-full object-contain rounded-lg transition-transform duration-500 group-hover:scale-102"
+                />
+              </div>
+              <div className="group rounded-xl border border-[#1d5a96] dark:bg-[#071e3d] bg-slate-50 p-4 flex items-center justify-center h-[280px] overflow-hidden transition-all duration-300 group-hover:border-[#00BFFF]/50">
+                <img
+                  src="/media/reconocimientos/sadosky/certificado-impacto-digital.png"
+                  alt="Certificado Impacto Digital — Premios Sadosky 2025"
+                  className="max-w-full max-h-full object-contain rounded-lg transition-transform duration-500 group-hover:scale-102"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* ══ PREMIOS VERDES ══════════════════════════════════════════════ */}
+          <div className="glass-card rounded-2xl p-6 lg:p-8 space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#164272]/40 pb-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center">
+                  <Award className="w-5 h-5 text-[#D4AF37]" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-white leading-tight">{a.premiosverdes_title}</h3>
+                  <p className="text-[10px] text-[#D4AF37] font-bold tracking-wide uppercase mt-1 leading-none">{a.premiosverdes_badge}</p>
+                </div>
+              </div>
+              <a
+                href="https://500-mejores.premiosverdes.org/es/proyecto-500-mejores?proyecto=asistea-carlos-ezequiel-leiva"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-xl border border-[#1d5a96] text-[#00BFFF] hover:border-[#00BFFF] transition-colors whitespace-nowrap w-fit"
+              >
+                {a.premiosverdes_cta} <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
+
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">{a.premiosverdes_body}</p>
+
+            {/* Pieza de selección Top 500 + certificado de participación */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+              <figure className="space-y-2 group">
+                <div className="w-full rounded-xl border border-[#1d5a96] dark:bg-[#071e3d] bg-slate-50 flex items-center justify-center p-4 h-[280px] overflow-hidden transition-all duration-300 group-hover:border-[#00BFFF]/50">
+                  <img
+                    src="/media/reconocimientos/premios-verdes/500M.gif"
+                    alt="AsisTEA — Top 500 Premios Verdes 2026"
+                    className="max-w-full max-h-full object-contain rounded-lg transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <figcaption className="text-[10px] text-slate-400 font-semibold leading-relaxed group-hover:text-white transition-colors">{a.premiosverdes_gif_caption}</figcaption>
+              </figure>
+              <figure className="space-y-2 group">
+                <div className="w-full rounded-xl border border-[#1d5a96] dark:bg-[#071e3d] bg-slate-50 flex items-center justify-center p-4 h-[280px] overflow-hidden transition-all duration-300 group-hover:border-[#00BFFF]/50">
+                  <img
+                    src="/media/reconocimientos/premios-verdes/certificado_participacion.png"
+                    alt="Certificado oficial de participación — Premios Verdes 2026"
+                    className="max-w-full max-h-full object-contain rounded-lg transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <figcaption className="text-[10px] text-slate-400 font-semibold leading-relaxed group-hover:text-white transition-colors">{a.premiosverdes_cert_caption}</figcaption>
               </figure>
             </div>
-          </CardContent>
-        </Card>
+          </div>
 
-        {/* Sadosky */}
-        <Card className="bg-muted/50">
-          <CardHeader>
-            <CardTitle className="text-2xl">
-              Premios Sadosky — Cámara de la Industria Argentina del
-              Software (CESSI)
-            </CardTitle>
-
-            <p className="text-sm text-muted-foreground">
-              Finalista en dos categorías · 2025
-            </p>
-          </CardHeader>
-
-          <CardContent className="space-y-6">
-            <p className="text-muted-foreground">
-              Los Premios Sadosky constituyen el reconocimiento más
-              relevante del sector tecnológico argentino. En su 21°
-              edición, XCAIL fue finalista en dos categorías simultáneas
-              — Innovación Transformadora e Impacto Digital —
-              destacándose por su enfoque tecnológico, impacto
-              verificable y potencial de innovación y escalabilidad.
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <img
-                src="/media/reconocimientos/sadosky/certificado-innovacion-transformadora.png"
-                alt="Certificado Innovación Transformadora"
-                className="rounded-lg border w-full object-contain"
-              />
-
-              <img
-                src="/media/reconocimientos/sadosky/certificado-impacto-digital.png"
-                alt="Certificado Impacto Digital"
-                className="rounded-lg border w-full object-contain"
-              />
-            </div>
-          </CardContent>
-        </Card>
+        </div>
       </div>
     </section>
   );

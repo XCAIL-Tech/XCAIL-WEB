@@ -9,7 +9,7 @@ export function Solutions() {
     >
       <div className="space-y-14">
 
-        {/* T铆tulo */}
+        {/* T韙ulo */}
         <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">
             <span className="bg-gradient-to-b from-[#00BFFF] to-[#0099CC] text-transparent bg-clip-text">
@@ -20,8 +20,8 @@ export function Solutions() {
           </h2>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Plataforma de Inteligencia Artificial Generativa dise帽ada para
-            transformar informaci贸n compleja en evidencia, apoyo y toma de
+            Plataforma de Inteligencia Artificial Generativa dise馻da para
+            transformar informaci髇 compleja en evidencia, apoyo y toma de
             decisiones escalables en neurodiversidad.
           </p>
         </div>
@@ -46,23 +46,23 @@ export function Solutions() {
                 AsisTEA es una plataforma de Inteligencia Artificial
                 Generativa desarrollada por XCAIL Technologies para apoyar a
                 familias, profesionales e instituciones mediante herramientas
-                basadas en evidencia y procesamiento avanzado de informaci贸n.
+                basadas en evidencia y procesamiento avanzado de informaci髇.
               </p>
 
               <p className="text-muted-foreground">
-                La plataforma integra modelos de lenguaje de 煤ltima generaci贸n
-                (LLMs) para transformar registros heterog茅neos y datos
-                cualitativos en informaci贸n estructurada, trazable y accionable.
-                Su arquitectura permite centralizar informaci贸n, generar
-                acompa帽amiento personalizado y fortalecer la toma de decisiones
-                mediante an谩lisis asistido por IA.
+                La plataforma integra modelos de lenguaje de 鷏tima generaci髇
+                (LLMs) para transformar registros heterog閚eos y datos
+                cualitativos en informaci髇 estructurada, trazable y accionable.
+                Su arquitectura permite centralizar informaci髇, generar
+                acompa馻miento personalizado y fortalecer la toma de decisiones
+                mediante an醠isis asistido por IA.
               </p>
 
               <p className="text-muted-foreground">
-                Dise帽ada con una arquitectura escalable sobre infraestructura
-                cloud, AsisTEA evoluciona como un ecosistema tecnol贸gico capaz
+                Dise馻da con una arquitectura escalable sobre infraestructura
+                cloud, AsisTEA evoluciona como un ecosistema tecnol骻ico capaz
                 de integrarse progresivamente en contextos de salud,
-                educaci贸n y apoyo institucional en mercados de habla hispana.
+                educaci髇 y apoyo institucional en mercados de habla hispana.
               </p>
 
               {/* CTAs */}
@@ -101,7 +101,14 @@ export function Solutions() {
                   "
                   asChild
                 >
-                  <a href="#contacto">
+                  <a
+                    href="/contact"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                      window.history.pushState(null, "", "/contact");
+                    }}
+                  >
                     Contacto
                   </a>
                 </Button>

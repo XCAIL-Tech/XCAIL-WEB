@@ -1,75 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* *=========== Default theme =========== */
-/* @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;  /* evita scroll horizontal por blobs y w-screen */
+}
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+body {
+  overflow-x: clip;
+}
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+/* Base Font Setup */
+@layer base {
+  body {
+    font-family: 'Outfit', sans-serif;
+    @apply bg-background text-foreground;
   }
+}
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+/* ─── Hero background blobs ─── */
+@keyframes blob-drift-1 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33%       { transform: translate(32px, -22px) scale(1.06); }
+  66%       { transform: translate(-18px, 28px) scale(0.96); }
+}
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+@keyframes blob-drift-2 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33%       { transform: translate(-28px, 22px) scale(0.94); }
+  66%       { transform: translate(22px, -18px) scale(1.04); }
+}
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+/* ─── Hero content entrance ─── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+.animate-fade-up {
+  animation: fade-up 0.75s ease-out 0.1s both;
+}
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+/* ─── Particle network ─── */
+@keyframes node-pulse {
+  0%, 100% { opacity: 0.28; }
+  50%       { opacity: 0.62; }
+}
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+@keyframes edge-pulse {
+  0%, 100% { opacity: 0.07; }
+  50%       { opacity: 0.18; }
+}
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+/* ─── Pulso del wordmark XCAIL en el Hero ─── */
+@keyframes brand-pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0px rgba(0, 191, 255, 0));
   }
-} */
+  50% {
+    transform: scale(1.06);
+    filter: drop-shadow(0 0 55px rgba(0, 191, 255, 0.75));
+  }
+}
 
-/* *=========== Kirk Lin Blue theme =========== */
+.animate-brand-pulse {
+  display: inline-block;
+  transform-origin: left center;
+  animation: brand-pulse 2.4s ease-in-out infinite;
+}
+
+/* ─── Respect reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  .blob-1, .blob-2 { animation: none !important; }
+  .animate-fade-up  { animation: none !important; }
+  .animate-brand-pulse { animation: none !important; }
+}
+
+/* ════════════════════════════════════════════════════════
+   XCAIL Color Tokens — editar aquí para restyling global
+   ════════════════════════════════════════════════════════
+   --xcail-hero : Hero + Navbar (oscuro en dark mode, claro en light mode)
+   --background (dark) : fondo de secciones en modo oscuro
+   ──────────────────────────────────────────────────────── */
+
+/* *=========== Theme Vars =========== */
 @layer base {
   :root {
+    /* Hero/Navbar: modo claro — adaptar aquí para light mode */
+    --xcail-hero: 220 60% 96%;   /* #eff3fb — casi blanco azulado */
+
     --background: 229 57% 100%;
     --foreground: 229 63% 4%;
     --muted: 229 12% 86%;
@@ -89,29 +113,30 @@
     --destructive: 3 100% 50%;
     --destructive-foreground: 3 0% 100%;
     --ring: 229 100% 62%;
-    --radius: 0.5rem;
+    --radius: 0.75rem;
   }
 
   .dark {
-    --background: 229 41% 4%;
-    --foreground: 229 23% 99%;
-    --muted: 229 12% 14%;
-    --muted-foreground: 229 10% 63%;
-    --popover: 229 41% 5%;
+    --xcail-hero: 232 82% 11%;   /* #050b33 — Hero + Navbar en modo oscuro */
+    --background: 240 100% 6.3%; /* #000020 — secciones */
+    --foreground: 210 30% 96%;
+    --muted: 220 50% 18%;
+    --muted-foreground: 210 20% 65%;
+    --popover: 222 80% 14%;
     --popover-foreground: 0 0% 100%;
-    --card: 229 41% 5%;
+    --card: 220 76% 16%;         /* ~#0a2050 — tarjetas */
     --card-foreground: 0 0% 100%;
-    --border: 215 27.9% 16.9%;
-    --input: 215 27.9% 16.9%;
-    --primary: 229 100% 62%;
+    --border: 220 52% 28%;
+    --input: 220 52% 28%;
+    --primary: 200 100% 50%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 229 14% 8%;
-    --secondary-foreground: 229 14% 68%;
-    --accent: 229 23% 17%;
-    --accent-foreground: 229 23% 77%;
+    --secondary: 220 64% 15%;
+    --secondary-foreground: 210 20% 75%;
+    --accent: 220 48% 20%;
+    --accent-foreground: 210 30% 90%;
     --destructive: 3 89% 54%;
     --destructive-foreground: 0 0% 100%;
-    --ring: 229 100% 62%;
+    --ring: 200 100% 50%;
   }
 }
 
@@ -119,7 +144,128 @@
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground;
+}
+
+/* ─── Glassmorphism Utilities ─── */
+.glass-card {
+  background: rgba(18, 48, 110, 0.80);  /* más claro que #000e38 para contraste */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(40, 90, 165, 0.50);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) {
+  .glass-card:hover {
+    border-color: rgba(55, 120, 200, 0.85);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
+    transform: translateY(-2px);
   }
 }
+
+/* Glow para tarjeta destacada (Familiar B2C) */
+.glass-card-highlight {
+  background: rgba(15, 38, 100, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid #5F33FF;
+  box-shadow: 0 0 30px rgba(95, 51, 255, 0.28);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) {
+  .glass-card-highlight:hover {
+    box-shadow: 0 0 40px rgba(95, 51, 255, 0.45);
+    transform: translateY(-4px);
+  }
+}
+
+/* Botones Premium con Degradados */
+.btn-primary-gradient {
+  background: linear-gradient(135deg, #5F33FF 0%, #00BFFF 100%);
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+@media (hover: hover) {
+  .btn-primary-gradient:hover {
+    box-shadow: 0 0 25px rgba(95, 51, 255, 0.5);
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+  }
+}
+
+/* ─── Light mode overrides ─── */
+
+/* Cards: blancas con sombra visible */
+html:not(.dark) .glass-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+@media (hover: hover) {
+  html:not(.dark) .glass-card:hover {
+    border-color: rgba(0, 0, 0, 0.16);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+  }
+}
+
+html:not(.dark) .glass-card-highlight {
+  background: #ffffff;
+  border: 1px solid hsl(var(--primary) / 0.4);
+  box-shadow: 0 0 30px hsl(var(--primary) / 0.10), 0 2px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Texto en todas las secciones en modo claro */
+html:not(.dark) section .text-white {
+  color: hsl(var(--foreground));
+}
+
+html:not(.dark) section .text-slate-300 {
+  color: hsl(222 20% 30%);
+}
+
+html:not(.dark) section .text-slate-400 {
+  color: hsl(222 15% 42%);
+}
+
+html:not(.dark) section .text-slate-500 {
+  color: hsl(222 12% 52%);
+}
+
+/* Texto en glass-cards (incluyendo la del Hero) */
+html:not(.dark) .glass-card .text-white {
+  color: hsl(var(--foreground));
+}
+
+html:not(.dark) .glass-card .text-slate-300,
+html:not(.dark) .glass-card .text-slate-400,
+html:not(.dark) .glass-card .text-slate-500 {
+  color: hsl(var(--muted-foreground));
+}
+
+/* Solo los gradientes BLANCOS (from-white) se convierten a azul oscuro.
+   Los gradientes de color (from-[#00BFFF] etc.) no se tocan. */
+html:not(.dark) section [class*="from-white"][class*="text-transparent"] {
+  background-image: linear-gradient(to right, #0c1a40, #1e3d78, #2a5599);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Línea de selección de Navbar */
+.nav-link-active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 2px;
+  border-radius: 99px;
+  background: #00BFFF;
+  box-shadow: 0 0 8px #00BFFF;
+}
+

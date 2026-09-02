@@ -135,7 +135,7 @@ export default function AdminContactos() {
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <img
-              src="/media/logos/xcail-logo.png"
+              src="/media/logos/XCAIL-LOGO-2026.png"
 
               alt="XCAIL"
               className="h-8 w-auto"
@@ -177,9 +177,9 @@ export default function AdminContactos() {
 
         {/* Contador */}
         <div className="flex gap-4 text-sm">
-          <span className="text-green-400">● Nuevos: {contacts.filter((c) => c.status === "new").length}</span>
-          <span className="text-yellow-400">● Revisados: {contacts.filter((c) => c.status === "reviewed").length}</span>
-          <span className="text-gray-400">● Cerrados: {contacts.filter((c) => c.status === "closed").length}</span>
+          <span className="text-green-400">? Nuevos: {contacts.filter((c) => c.status === "new").length}</span>
+          <span className="text-yellow-400">? Revisados: {contacts.filter((c) => c.status === "reviewed").length}</span>
+          <span className="text-gray-400">? Cerrados: {contacts.filter((c) => c.status === "closed").length}</span>
         </div>
 
         {/* Lista de contactos */}

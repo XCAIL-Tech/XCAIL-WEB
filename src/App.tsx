@@ -5,20 +5,26 @@ import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { Hero } from "./components/Hero";
 import { Navbar } from "./components/Navbar";
+import { Products } from "./components/Products";
+import { Pricing } from "./components/Pricing";
 import { ScrollToTop } from "./components/ScrollToTop";
-import { Solutions } from "./components/Solutions";
 import AdminLogin from "./pages/AdminLogin";
 import AdminContactos from "./pages/AdminContactos";
+import Privacidad from "./pages/Privacidad";
+import Terminos from "./pages/Terminos";
+import Faq from "./pages/Faq";
 import "./App.css";
 
 function Home() {
+
   return (
     <>
       <Navbar />
       <Hero />
-      <About />
-      <Solutions />
+      <Products />
+      <Pricing />
       <Awards />
+      <About />
       <Contact />
       <Footer />
       <ScrollToTop />
@@ -30,9 +36,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin/contactos" element={<AdminContactos />} />
+        {/* Páginas independientes — deben ir antes del catch-all */}
+        <Route path="/privacidad"        element={<Privacidad />} />
+        <Route path="/terminos"          element={<Terminos />} />
+        <Route path="/preguntas-frecuentes" element={<Faq />} />
+        <Route path="/admin/login"       element={<AdminLogin />} />
+        <Route path="/admin/contactos"   element={<AdminContactos />} />
+        {/* Landing — catch-all: /, /products, /about, /contact, etc. */}
+        <Route path="*" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );

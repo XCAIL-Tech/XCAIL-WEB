@@ -1,6 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
+  // hover: y group-hover: solo aplican con dispositivos que soportan hover
+  // real (mouse). Sin esto, en mobile un scroll/swipe rápido puede disparar
+  // los estilos :hover al pasar el dedo sobre una card, dando el efecto de
+  // "se agranda por un instante" que se ve durante el scroll.
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
@@ -10,7 +17,11 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: "1.5rem",
+      padding: {
+        DEFAULT: "1.5rem",
+        sm: "2rem",
+        lg: "3rem",
+      },
       screens: {
         "2xl": "1400px",
       },
@@ -23,6 +34,7 @@ module.exports = {
           yellow: "#fca311",
           blue: "#00BFFF",
         },
+        'xcail-hero': 'hsl(var(--xcail-hero))',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

@@ -1,32 +1,25 @@
-"use client";
-
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "./ui/button";
 import { supabase } from "@/lib/supabase";
+import { useI18n } from "@/lib/i18n";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { Send } from "lucide-react";
 
 export function Contact() {
+  const { tr } = useI18n();
+  const c = tr.contact;
+  const { ref, isVisible } = useScrollReveal();
+
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    institution: "",
-    subject: "",
-    message: "",
+    name: "", email: "", subject: "", message: "",
   });
 
-  const [status, setStatus] = useState<
-    "idle" | "sending" | "success" | "error"
-  >("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -34,321 +27,152 @@ export function Contact() {
     setStatus("sending");
 
     try {
-      // 1. Guardar en Supabase
-      const { error } = await supabase.from("contacts").insert([
-        {
-          name: formData.name,
-          email: formData.email,
-          institution: formData.institution || null,
-          subject: formData.subject,
-          message: formData.message,
-          status: "new",
-        },
-      ]);
+      const { error } = await supabase.from("contacts").insert([{
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        status: "new",
+      }]);
 
       if (error) throw error;
 
-      // 2. Enviar notificación por email (no bloquea si falla)
       try {
-        const NOTIFY_URL =
-          import.meta.env.VITE_NOTIFY_URL ||
-          "http://localhost:3001/api/notify";
-
+        const NOTIFY_URL = import.meta.env.VITE_NOTIFY_URL || "http://localhost:3001/api/notify";
         await fetch(NOTIFY_URL, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            institution: formData.institution || "",
-            subject: formData.subject,
-            message: formData.message,
-          }),
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...formData }),
         });
       } catch {
-        console.warn("⚠️ Notificación por email no disponible");
+        console.warn("⚠️ Email notification unavailable");
       }
 
       setStatus("success");
-
-      setFormData({
-        name: "",
-        email: "",
-        institution: "",
-        subject: "",
-        message: "",
-      });
-
+      setFormData({ name: "", email: "", subject: "", message: "" });
       setTimeout(() => setStatus("idle"), 4000);
-    } catch (error) {
-      console.error("Error al enviar:", error);
-
+    } catch (err) {
+      console.error("Error:", err);
       setStatus("error");
-
       setTimeout(() => setStatus("idle"), 4000);
     }
   };
 
   return (
-    <section
-      id="contacto"
-      className="container py-24 sm:py-32"
-    >
-      {/* Título */}
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-        <span className="bg-gradient-to-r from-[#00BFFF] to-[#0099CC] text-transparent bg-clip-text">
-          Contacto
-        </span>
-      </h2>
+    <section id="contact" className="bg-background relative py-20 sm:py-24">
+      {/* Luz decorativa */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70%] h-[35%] bg-[#00BFFF]/5 rounded-full blur-[120px] pointer-events-none" />
 
-      {/* Subtítulo */}
-      <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
-        En XCAIL Technologies desarrollamos productos tecnológicos impulsados
-        por Inteligencia Artificial para fortalecer la toma de decisiones, el
-        acceso a evidencia y el acompañamiento en contextos de salud,
-        neurodiversidad y alto impacto social.
-      </p>
+      <div
+        ref={ref}
+        className={`container mx-auto relative z-10 transition-all duration-700 ease-out ${
+          isVisible ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        {/* Encabezado */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 text-white">
+            <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 text-transparent bg-clip-text">
+              {c.title}
+            </span>
+          </h2>
+          <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">{c.subtitle}</p>
+        </div>
 
-      <div className="max-w-4xl mx-auto space-y-8">
-        {/* Formulario */}
-        <Card>
-          <CardHeader>
-            <CardTitle>
-              Contacto
-            </CardTitle>
+        {/* Formulario full-width */}
+        <div className="max-w-6xl mx-auto">
+          <div className="glass-card rounded-2xl p-6 lg:p-8">
+            <div className="mb-6">
+              <h3 className="text-lg font-bold text-white">{c.form_title}</h3>
+              <p className="text-xs text-slate-400 mt-1 leading-relaxed">{c.form_subtitle}</p>
+            </div>
 
-            <p className="text-sm text-muted-foreground">
-              ¿Te interesa AsisTEA, una alianza institucional o conocer
-              nuestro trabajo? Escribinos y te responderemos a la brevedad.
-            </p>
-          </CardHeader>
+            <form onSubmit={handleSubmit} className="space-y-4">
 
-          <CardContent>
-            <form
-              onSubmit={handleSubmit}
-              className="space-y-4"
-            >
-              {/* Nombre */}
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium mb-2"
-                >
-                  Nombre completo *
-                </label>
-
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  disabled={status === "sending"}
-                  placeholder="Tu nombre"
-                  className="w-full px-3 py-2 border rounded-md bg-background disabled:opacity-50"
-                />
-              </div>
-
-              {/* Email */}
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium mb-2"
-                >
-                  Correo electrónico *
-                </label>
-
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  disabled={status === "sending"}
-                  placeholder="tu@email.com"
-                  className="w-full px-3 py-2 border rounded-md bg-background disabled:opacity-50"
-                />
-              </div>
-
-              {/* Institución */}
-              <div>
-                <label
-                  htmlFor="institution"
-                  className="block text-sm font-medium mb-2"
-                >
-                  Institución / Organización
-                </label>
-
-                <input
-                  type="text"
-                  id="institution"
-                  name="institution"
-                  value={formData.institution}
-                  onChange={handleChange}
-                  disabled={status === "sending"}
-                  placeholder="Nombre de la institución (opcional)"
-                  className="w-full px-3 py-2 border rounded-md bg-background disabled:opacity-50"
-                />
+              {/* Nombre + Email en fila */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <label htmlFor="name" className="text-xs font-bold text-slate-300 uppercase tracking-wider">{c.name} *</label>
+                  <input
+                    type="text" id="name" name="name"
+                    value={formData.name} onChange={handleChange}
+                    required disabled={status === "sending"}
+                    placeholder={c.name_placeholder}
+                    className="w-full px-4 py-3 bg-background/75 border border-[#1d5a96] text-slate-200 placeholder-slate-500 rounded-xl focus:outline-none focus:border-[#5F33FF] focus:ring-1 focus:ring-[#5F33FF] transition-all disabled:opacity-50 text-xs sm:text-sm"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <label htmlFor="email" className="text-xs font-bold text-slate-300 uppercase tracking-wider">{c.email_label} *</label>
+                  <input
+                    type="email" id="email" name="email"
+                    value={formData.email} onChange={handleChange}
+                    required disabled={status === "sending"}
+                    placeholder={c.email_placeholder}
+                    className="w-full px-4 py-3 bg-background/75 border border-[#1d5a96] text-slate-200 placeholder-slate-500 rounded-xl focus:outline-none focus:border-[#5F33FF] focus:ring-1 focus:ring-[#5F33FF] transition-all disabled:opacity-50 text-xs sm:text-sm"
+                  />
+                </div>
               </div>
 
               {/* Asunto */}
-              <div>
-                <label
-                  htmlFor="subject"
-                  className="block text-sm font-medium mb-2"
-                >
-                  Asunto *
-                </label>
-
+              <div className="space-y-1.5">
+                <label htmlFor="subject" className="text-xs font-bold text-slate-300 uppercase tracking-wider">{c.subject} *</label>
                 <select
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  disabled={status === "sending"}
-                  className="w-full px-3 py-2 border rounded-md bg-background disabled:opacity-50"
+                  id="subject" name="subject"
+                  value={formData.subject} onChange={handleChange}
+                  required disabled={status === "sending"}
+                  className="w-full px-4 py-3 bg-background/75 border border-[#1d5a96] text-slate-200 placeholder-slate-500 rounded-xl focus:outline-none focus:border-[#5F33FF] focus:ring-1 focus:ring-[#5F33FF] transition-all disabled:opacity-50 text-xs sm:text-sm appearance-none relative"
                 >
-                  <option value="">
-                    Selecciona un asunto
-                  </option>
-
-                  <option value="Conocer AsisTEA">
-                    Conocer AsisTEA
-                  </option>
-
-                  <option value="Alianza institucional">
-                    Alianza institucional
-                  </option>
-
-                  <option value="Piloto o adopción">
-                    Piloto o adopción
-                  </option>
-
-                  <option value="Prensa o reconocimientos">
-                    Prensa o reconocimientos
-                  </option>
-
-                  <option value="Consulta general">
-                    Consulta general
-                  </option>
-
-                  <option value="Otro">
-                    Otro
-                  </option>
+                  <option value="" className="bg-[#071e3d]">{c.subject_placeholder}</option>
+                  {c.subjects.map((s) => (
+                    <option key={s} value={s} className="bg-[#071e3d]">{s}</option>
+                  ))}
                 </select>
               </div>
 
               {/* Mensaje */}
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium mb-2"
-                >
-                  Mensaje *
-                </label>
-
+              <div className="space-y-1.5">
+                <label htmlFor="message" className="text-xs font-bold text-slate-300 uppercase tracking-wider">{c.message} *</label>
                 <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  disabled={status === "sending"}
-                  rows={5}
-                  placeholder="Describe brevemente el motivo de tu contacto..."
-                  className="w-full px-3 py-2 border rounded-md bg-background disabled:opacity-50"
+                  id="message" name="message"
+                  value={formData.message} onChange={handleChange}
+                  required disabled={status === "sending"}
+                  rows={4} placeholder={c.message_placeholder}
+                  className="w-full px-4 py-3 bg-background/75 border border-[#1d5a96] text-slate-200 placeholder-slate-500 rounded-xl focus:outline-none focus:border-[#5F33FF] focus:ring-1 focus:ring-[#5F33FF] transition-all disabled:opacity-50 text-xs sm:text-sm"
                 />
               </div>
 
-              {/* Éxito */}
+              {/* Estado de envío */}
               {status === "success" && (
-                <div className="p-3 rounded-md bg-green-900/95 border border-green-600 text-green-400 text-sm text-center">
-                  Mensaje enviado correctamente. Nos comunicaremos pronto.
+                <div className="p-3 rounded-xl bg-emerald-950/60 border border-emerald-500/40 text-emerald-400 text-xs text-center font-bold">
+                  {c.success}
                 </div>
               )}
 
-              {/* Error */}
               {status === "error" && (
-                <div className="p-3 rounded-md bg-red-900/30 border border-red-600 text-red-400 text-sm text-center">
-                  Hubo un error al enviar. Intenta nuevamente o escribinos a
-                  contacto@xcail.com
+                <div className="p-3 rounded-xl bg-rose-950/60 border border-rose-500/40 text-rose-400 text-xs text-center font-bold">
+                  {c.error}
                 </div>
               )}
 
-              {/* Botón */}
+              {/* Enviar */}
               <div className="pt-2">
                 <Button
-                  type="submit"
-                  disabled={status === "sending"}
-                  className="w-full bg-transparent border-2 border-[#fca311] text-[#fca311] hover:bg-[#fca311] hover:text-black font-semibold disabled:opacity-50"
+                  type="submit" disabled={status === "sending"}
+                  className="w-full btn-primary-gradient border-0 font-bold uppercase tracking-wider py-4 rounded-xl shadow-lg shadow-[#5f33ff]/15 disabled:opacity-50 cursor-pointer flex items-center justify-center gap-1.5 text-xs"
                 >
-                  {status === "sending"
-                    ? "Enviando..."
-                    : "Enviar mensaje"}
+                  {status === "sending" ? (
+                    c.sending
+                  ) : (
+                    <>
+                      {c.submit} <Send className="w-3.5 h-3.5" />
+                    </>
+                  )}
                 </Button>
               </div>
+
             </form>
-          </CardContent>
-        </Card>
-
-        {/* Información institucional */}
-        <Card>
-          <CardHeader>
-            <CardTitle>
-              Información institucional
-            </CardTitle>
-          </CardHeader>
-
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-center md:text-left">
-              {/* Email */}
-              <div className="flex flex-col md:flex-row items-center md:items-start gap-3">
-                <div className="text-2xl">
-                  📧
-                </div>
-
-                <div>
-                  <h3 className="font-semibold mb-1">
-                    Email institucional
-                  </h3>
-
-                  <a
-                    href="mailto:contacto@xcail.com"
-                    className="text-[#00BFFF] hover:underline"
-                  >
-                    contacto@xcail.com
-                  </a>
-                </div>
-              </div>
-
-              {/* Dirección */}
-              <div className="flex flex-col md:flex-row items-center md:items-start gap-3">
-                <div className="text-2xl">
-                  📍
-                </div>
-
-                <div>
-                  <h3 className="font-semibold mb-1">
-                    Domicilio
-                  </h3>
-
-                  <p className="text-sm text-muted-foreground">
-                    Nicaragua 4817
-                    <br />
-                    Ciudad Autónoma de Buenos Aires
-                    <br />
-                    Argentina
-                  </p>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </section>
   );

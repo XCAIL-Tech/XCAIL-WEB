@@ -1,63 +1,115 @@
 <!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="es" class="dark">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/media/logos/xcail-favicon.png" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Title -->
-    <title>XCAIL Technologies</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/media/logos/XCAIL-LOGO-2026.png" />
 
-    <!-- SEO Meta Tags -->
-    <meta
-      name="description"
-      content="Empresa de innovación tecnológica enfocada en el desarrollo de plataformas digitales y sistemas de información basados en datos. Soluciones con foco en gobernanza del dato, escalabilidad y resolución de problemáticas complejas."
-    />
-    <meta
-      name="keywords"
-      content="XCAIL Technologies, plataformas digitales, sistemas de información, inteligencia artificial, gobernanza del dato, software, Argentina, AsisTEA"
-    />
-    <meta name="author" content="XCAIL Technologies" />
-    <meta name="robots" content="index, follow" />
+  <!-- Title -->
+  <title>XCAIL Technologies — IA para neurodesarrollo y accesibilidad</title>
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://xcail.com/" />
-    <meta property="og:title" content="XCAIL Technologies" />
-    <meta
-      property="og:description"
-      content="Empresa de innovación tecnológica enfocada en el desarrollo de plataformas digitales y sistemas de información basados en datos."
-    />
-    <meta
-      property="og:image"
-      content="https://xcail.com/media/logos/xcail-logo.png"
-    />
-    <meta property="og:locale" content="es_AR" />
-    <meta property="og:site_name" content="XCAIL Technologies" />
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="XCAIL Technologies, startup argentina de base tecnológica especializada en inteligencia artificial aplicada a la accesibilidad, el neurodesarrollo y la inclusión. Creadora de AsisTEA e INCLUXIA (Connect y Stroke)." />
+  <meta name="keywords"
+    content="XCAIL Technologies, AsisTEA, INCLUXIA, INCLUXIA Connect, INCLUXIA Stroke, startup IA, inteligencia artificial, neurodesarrollo, accesibilidad, SaaS, Google Cloud, Gemini API, Firebase, Argentina" />
+  <meta name="author" content="XCAIL Technologies SAS" />
+  <meta name="robots" content="index, follow" />
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="XCAIL Technologies" />
-    <meta
-      name="twitter:description"
-      content="Empresa de innovación tecnológica enfocada en el desarrollo de plataformas digitales y sistemas de información basados en datos."
-    />
-    <meta
-      name="twitter:image"
-      content="https://xcail.com/media/logos/xcail-logo.png"
-    />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://xcail.com/" />
+  <meta property="og:title" content="XCAIL Technologies — IA para neurodesarrollo y accesibilidad" />
+  <meta property="og:description"
+    content="Startup argentina de base tecnológica especializada en IA aplicada a la accesibilidad, el neurodesarrollo y la inclusión. Creadora de AsisTEA e INCLUXIA (comunicación accesible y reconocimiento de ACV)." />
+  <meta property="og:image" content="https://xcail.com/media/logos/XCAIL-TECH-DORADO-PNG.png" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:site_name" content="XCAIL Technologies" />
 
-    <!-- Canonical -->
-    <link rel="canonical" href="https://xcail.com/" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="XCAIL Technologies — IA para neurodesarrollo y accesibilidad" />
+  <meta name="twitter:description"
+    content="Startup argentina de base tecnológica especializada en IA aplicada a la accesibilidad, el neurodesarrollo y la inclusión. Creadora de AsisTEA e INCLUXIA." />
+  <meta name="twitter:image" content="https://xcail.com/media/logos/XCAIL-TECH-DORADO-PNG.png" />
 
-    <!-- Language -->
-    <meta http-equiv="content-language" content="es-AR" />
-  </head>
+  <!-- Canonical -->
+  <link rel="canonical" href="https://xcail.com/" />
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+  <!-- Language -->
+  <meta http-equiv="content-language" content="es-AR" />
+
+  <!-- Structured Data: Organization + productos propios -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://xcail.com/#organization",
+        "name": "XCAIL Technologies",
+        "legalName": "XCAIL Technologies SAS",
+        "url": "https://xcail.com",
+        "logo": "https://xcail.com/media/logos/XCAIL-TECH-DORADO-PNG.png",
+        "description": "Startup argentina de base tecnológica especializada en inteligencia artificial aplicada a la accesibilidad, el neurodesarrollo y la inclusión. Creadora de AsisTEA e INCLUXIA (Connect y Stroke).",
+        "foundingDate": "2025",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Buenos Aires",
+          "addressCountry": "AR"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "contacto@xcail.com",
+          "contactType": "customer service"
+        },
+        "award": [
+          "Finalista, Innovación Transformadora e Impacto Digital — Premios Sadosky 2025 (CESSI)",
+          "Mención Especial, Diversidad, Equidad e Inclusión — Premios BritCham Argentina 2025",
+          "Top 500 Mejores Proyectos Socioambientales de Iberoamérica — Premios Verdes 2026"
+        ],
+        "founder": {
+          "@type": "Person",
+          "name": "Carlos Ezequiel Leiva",
+          "jobTitle": "Founder & CEO"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/company/xcail-technologies/",
+          "https://www.instagram.com/xcail.tech",
+          "https://asistea.app",
+          "https://incluxia.app"
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "AsisTEA",
+        "url": "https://asistea.app",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Web",
+        "description": "Plataforma de inteligencia artificial para el acompañamiento de personas neurodivergentes, dirigida a familias, cuidadores y profesionales.",
+        "publisher": { "@id": "https://xcail.com/#organization" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "INCLUXIA",
+        "url": "https://incluxia.app",
+        "applicationCategory": "AccessibilityApplication",
+        "operatingSystem": "Web",
+        "description": "Plataforma de tecnología accesible con dos líneas de producto: INCLUXIA Connect (comunicador AAC para discapacidad motora y del habla) e INCLUXIA Stroke (reconocimiento de señales de ACV).",
+        "publisher": { "@id": "https://xcail.com/#organization" }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>
