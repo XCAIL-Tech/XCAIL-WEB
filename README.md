@@ -25,13 +25,17 @@ Plataforma web institucional desarrollada con React, TypeScript y Tailwind CSS q
 - **Lucide React** para iconos
 
 ### Backend & Servicios
-- **Supabase** - Base de datos (PostgreSQL) con Row Level Security
+- **Supabase** - Base de datos (PostgreSQL), registro best-effort de contactos
 - **Resend** - Envío de emails transaccionales
-- **Node.js** - Servidor de notificaciones (server.cjs)
+- **Vercel Serverless Function** (`api/notify.js`) - envía el mail del formulario de contacto
 
 ### Deploy
-- **Vercel** - Frontend (sitio React)
-- **Render** - Backend (servidor de notificaciones)
+- **Vercel** - Frontend (sitio React) y la función de notificación, en el mismo deploy
+
+> `server.cjs` (Node standalone) y su despliegue en Render quedaron
+> deprecados — el servicio de Render se cayó y rompió el formulario en
+> producción. Ver `DEPLOY.md` para el detalle de la migración a
+> `api/notify.js`.
 
 ## 📁 Estructura del Proyecto
 
@@ -58,7 +62,9 @@ XCAIL-WEB/
 │   ├── assets/             # Imágenes y recursos
 │   ├── App.tsx
 │   └── main.tsx
-├── server.cjs              # Servidor de notificaciones
+├── api/
+│   └── notify.js           # Vercel Function — envío de mail (reemplaza a server.cjs)
+├── server.cjs              # DEPRECADO — servidor standalone (Render, dado de baja)
 ├── .env                    # Variables de entorno (no incluido en repo)
 ├── package.json
 └── vite.config.ts

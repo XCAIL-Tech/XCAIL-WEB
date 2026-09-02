@@ -26,26 +26,32 @@ export function Contact() {
     e.preventDefault();
     setStatus("sending");
 
+    // El email es la fuente de verdad del formulario — si esto falla, el
+    // usuario ve el error real. El guardado en Supabase (para el panel
+    // admin) es un respaldo best-effort: si Supabase está caído no debe
+    // impedir que el mensaje llegue por mail.
     try {
-      const { error } = await supabase.from("contacts").insert([{
-        name: formData.name,
-        email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
-        status: "new",
-      }]);
-
-      if (error) throw error;
+      // Vercel Serverless Function en api/notify.js — mismo dominio, no
+      // depende de ningún backend externo (Render quedó deprecado).
+      const NOTIFY_URL = import.meta.env.VITE_NOTIFY_URL || "/api/notify";
+      const res = await fetch(NOTIFY_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData }),
+      });
+      if (!res.ok) throw new Error(`notify_failed_${res.status}`);
 
       try {
-        const NOTIFY_URL = import.meta.env.VITE_NOTIFY_URL || "http://localhost:3001/api/notify";
-        await fetch(NOTIFY_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...formData }),
-        });
-      } catch {
-        console.warn("⚠️ Email notification unavailable");
+        const { error } = await supabase.from("contacts").insert([{
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          status: "new",
+        }]);
+        if (error) throw error;
+      } catch (err) {
+        console.warn("⚠️ No se pudo guardar el contacto en Supabase (respaldo):", err);
       }
 
       setStatus("success");

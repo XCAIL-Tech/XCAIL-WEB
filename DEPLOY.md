@@ -8,10 +8,17 @@ Antes de deployar, asegurate de tener:
 
 - ✅ Cuenta de GitHub con repo `xcail-technologies/XCAIL-WEB`
 - ✅ Cuenta de Vercel (gratis en vercel.com)
-- ✅ Cuenta de Render (gratis en render.com)
-- ✅ Cuenta de Supabase con tabla `contacts` creada
-- ✅ Cuenta de Resend con dominio verificado
-- ✅ DNS configurado correctamente para Resend
+- ✅ Cuenta de Supabase con tabla `contacts` creada (registro best-effort, no crítico)
+- ✅ Cuenta de Resend con el subdominio `mail.xcail.com` verificado (DKIM + CNAMEs)
+- ✅ DNS configurado correctamente para Resend (ver Paso 3)
+
+> **Nota (2026-09):** el backend de notificaciones ya NO vive en Render.
+> `xcail-notifications.onrender.com` fue dado de baja / dejó de responder y
+> rompió el formulario de contacto en producción. El envío de mail ahora es
+> una Vercel Serverless Function (`api/notify.js`) que se despliega junto con
+> el resto del sitio — sin servicios externos que puedan "dormirse" o
+> desaparecer. Las secciones de Render de este documento quedan como
+> referencia histórica y NO deben seguirse.
 
 ---
 
@@ -64,13 +71,18 @@ En la pantalla de configuración:
 
 Hacé clic en **Environment Variables** y agregá:
 
-| Name | Value |
-|------|-------|
-| `VITE_SUPABASE_URL` | `https://frxcfvvxkxymwzkeskcu.supabase.co` |
-| `VITE_SUPABASE_ANON_KEY` | `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...` |
-| `VITE_RESEND_API_KEY` | `re_fFhQVMiA_MbtNsEHVrET3JY1tdnN1od3g` |
+| Name | Value | Expuesta al cliente |
+|------|-------|----------------------|
+| `RESEND_API_KEY` | la key "xcail-notificaciones" de resend.com/api-keys | No — solo la usa `api/notify.js` en el servidor |
+| `ADMIN_URL` (opcional) | `https://xcail.com/admin/contactos` | No |
 
-**Nota:** Usá las credenciales reales de tu proyecto.
+**Importante:** `RESEND_API_KEY` va **sin** prefijo `VITE_` — las variables `VITE_*`
+quedan embebidas en el bundle del navegador (públicas), y esta key debe
+quedar solo del lado del servidor.
+
+Las credenciales de Supabase (URL + anon key) están hardcodeadas en
+`src/lib/supabase.ts` — es la key pública "anon", diseñada para exponerse en
+el cliente, así que no hace falta declararla como variable de entorno acá.
 
 ### 2.4 Deploy
 
@@ -95,92 +107,34 @@ Vercel te va a pedir agregar estos registros en Hostinger:
 
 ---
 
-## 🔧 Paso 3: Deploy Backend en Render
+## 📧 Paso 3: Verificar el dominio de envío en Resend
 
-### 3.1 Crear Web Service
+El mail sale desde `noreply@mail.xcail.com` (un subdominio dedicado, para no
+tocar el SPF/DKIM del mail real de la empresa en `@xcail.com` vía Hostinger).
 
-1. Entrá a [render.com/dashboard](https://dashboard.render.com)
-2. Hacé clic en **New → Web Service**
-3. Conectá GitHub y seleccioná `xcail-technologies/XCAIL-WEB`
+1. Entrá a [resend.com/domains](https://resend.com/domains) → **Add domain**
+2. Ingresá `mail.xcail.com`
+3. Cargá en el DNS Zone Editor de Hostinger (dominio `xcail.com`) los 3
+   registros que Resend te muestre: 1 TXT (`resend._domainkey.mail`, la
+   clave DKIM) y 2 CNAME (`rsend.mail`, `send.mail`). Dejá "Enable
+   Receiving" apagado — solo se necesita enviar.
+4. Esperá a que el estado pase a **Verified** (puede tardar minutos u horas).
 
-### 3.2 Configurar el Servicio
-
-| Campo | Valor |
-|-------|-------|
-| **Name** | `xcail-notifications` |
-| **Region** | `Oregon (US West)` o el más cercano |
-| **Branch** | `main` |
-| **Root Directory** | (vacío) |
-| **Runtime** | `Node` |
-| **Build Command** | `npm install` |
-| **Start Command** | `node server.cjs` |
-| **Instance Type** | `Free` |
-
-### 3.3 Variables de Entorno
-
-En la sección **Environment Variables**, agregá:
-
-| Key | Value |
-|-----|-------|
-| `VITE_RESEND_API_KEY` | `re_fFhQVMiA_MbtNsEHVrET3JY1tdnN1od3g` |
-
-### 3.4 Deploy
-
-Hacé clic en **Create Web Service**.
-
-Render va a:
-1. Clonar el repo
-2. Instalar dependencias
-3. Iniciar `server.cjs`
-
-Después de 2-3 minutos, vas a tener una URL tipo:
-```
-https://xcail-notifications.onrender.com
-```
-
-**⚠️ Copiá esta URL, la vas a necesitar en el siguiente paso.**
+No hace falta backend propio para esto — la función de Vercel del Paso 4 le
+pega directo a la API de Resend.
 
 ---
 
-## 🔗 Paso 4: Conectar Frontend con Backend
+## 🔗 Paso 4: Función de notificación por mail (Vercel)
 
-### 4.1 Actualizar Contact.tsx
+El archivo `api/notify.js` en la raíz del repo ya implementa el envío — Vercel
+lo detecta solo como Serverless Function en cuanto ve la carpeta `api/`, sin
+configuración adicional. No hay "Paso 4.x" de conexión: el frontend le pega a
+`/api/notify` (mismo dominio, mismo deploy), así que no hay URL externa que
+mantener sincronizada.
 
-En tu proyecto local, editá `src/components/Contact.tsx`:
-
-**Buscar esta línea:**
-```typescript
-const response = await fetch("http://localhost:3001/api/notify", {
-```
-
-**Reemplazar por:**
-```typescript
-const response = await fetch("https://xcail-notifications.onrender.com/api/notify", {
-```
-
-### 4.2 Actualizar server.cjs
-
-Editá `server.cjs` en la raíz:
-
-**Buscar:**
-```javascript
-const ADMIN_URL = "http://localhost:5173/admin/contactos";
-```
-
-**Reemplazar por:**
-```javascript
-const ADMIN_URL = "https://xcail.com/admin/contactos";
-```
-
-### 4.3 Commitear y Pushear
-
-```powershell
-git add .
-git commit -m "Update: production URLs for Render and Vercel"
-git push origin main
-```
-
-Vercel va a detectar el push automáticamente y hacer redeploy en ~2 minutos.
+Solo asegurate de tener cargada `RESEND_API_KEY` en las Environment
+Variables de Vercel (Paso 2.3) — sin eso la función responde 500.
 
 ---
 
@@ -203,9 +157,9 @@ Vercel va a detectar el push automáticamente y hacer redeploy en ~2 minutos.
 
 **Si algo falla, revisá:**
 
-- Logs en Render: Dashboard → `xcail-notifications` → Logs
-- Logs en Vercel: Dashboard → `XCAIL-WEB` → Deployments → Latest → Logs
-- Variables de entorno configuradas correctamente en ambos servicios
+- Logs de la función: Vercel Dashboard → `XCAIL-WEB` → Deployments → Latest → Functions → `api/notify`
+- Logs generales: Vercel Dashboard → `XCAIL-WEB` → Deployments → Latest → Logs
+- `RESEND_API_KEY` configurada correctamente en Vercel → Settings → Environment Variables
 
 ---
 
@@ -223,25 +177,17 @@ Vercel va a detectar el push automáticamente y hacer redeploy en ~2 minutos.
 
 3. **Verificá la carpeta de Spam** en `contacto@xcail.com`
 
-### El servidor Render está "sleeping"
+### La función responde 500 con `missing_config`
 
-- En el plan Free, Render duerme después de 15 minutos sin uso
-- El primer request después del sleep puede tardar 30-60 segundos
-- Solución: Upgrade a Starter ($7/mes) o usar un servicio de ping como [cron-job.org](https://cron-job.org)
+Falta `RESEND_API_KEY` en las Environment Variables de Vercel — agregala y
+hacé un redeploy (Deployments → ⋯ → Redeploy).
 
 ### Error CORS en producción
 
-Si ves errores de CORS en la consola del navegador:
-
-En `server.cjs`, cambiá:
-```javascript
-res.setHeader("Access-Control-Allow-Origin", "*");
-```
-
-Por:
-```javascript
-res.setHeader("Access-Control-Allow-Origin", "https://xcail.com");
-```
+`api/notify.js` responde con `Access-Control-Allow-Origin: *`, así que no
+debería pasar. Si igual ves errores de CORS en la consola, revisá que la
+función esté realmente desplegada (Vercel → Deployments → Latest →
+Functions debe listar `api/notify`).
 
 ---
 
@@ -259,7 +205,8 @@ git commit -m "Descripción del cambio"
 git push origin main
 ```
 
-**Vercel y Render** detectan automáticamente el push y redesplegan sin intervención manual.
+**Vercel** detecta automáticamente el push y redespliega sin intervención
+manual — frontend y `api/notify.js` se despliegan juntos, en el mismo build.
 
 ---
 
@@ -269,12 +216,8 @@ git push origin main
 
 - **Analytics:** Dashboard → Analytics (gratis hasta 100k pageviews/mes)
 - **Logs:** Dashboard → Deployments → Logs
+- **Logs de la función de mail:** Dashboard → Deployments → Latest → Functions → `api/notify`
 - **Performance:** Dashboard → Speed Insights
-
-### Render
-
-- **Logs:** Dashboard → xcail-notifications → Logs (últimas 7 días en Free)
-- **Metrics:** Dashboard → Metrics (CPU, memoria)
 
 ### Supabase
 
@@ -287,15 +230,12 @@ git push origin main
 
 | Servicio | Plan | Costo |
 |----------|------|-------|
-| **Vercel** | Hobby | **$0** |
-| **Render** | Free | **$0** (con sleep) |
-| **Render** | Starter | $7 (sin sleep) |
+| **Vercel** | Hobby | **$0** (incluye la función `api/notify`) |
 | **Supabase** | Free | **$0** |
 | **Resend** | Free | **$0** (hasta 3k emails/mes) |
 | **Hostinger** | Hosting existente | Ya pagado |
 
-**Total mínimo:** $0/mes (con sleep en Render)  
-**Total recomendado:** $7/mes (sin sleep en Render)
+**Total:** $0/mes.
 
 ---
 
