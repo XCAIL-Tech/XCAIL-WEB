@@ -112,9 +112,9 @@ export function Footer() {
         </div>
 
         {/* Barra inferior */}
-        <div className="flex flex-col sm:flex-row items-center justify-between pt-6 border-t dark:border-white/[0.07] border-border gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-3 items-center pt-6 border-t dark:border-white/[0.07] border-border gap-3">
 
-          <div className="flex items-center gap-1 flex-wrap">
+          <div className="flex items-center gap-1 flex-wrap justify-center sm:justify-start">
             {legalLinks.map((l, i) => (
               <span key={l.label} className="flex items-center gap-1">
                 <a
@@ -134,6 +134,8 @@ export function Footer() {
             <strong> Technologies</strong>
             {" "}· {f.rights}
           </p>
+
+          <div className="hidden sm:block" />
 
         </div>
 

@@ -32,6 +32,12 @@ function useActiveSection() {
 
   useEffect(() => {
     const onScroll = () => {
+      // Si la sección "home" del Hero no está en el DOM, no estamos en la
+      // landing (estamos en /preguntas-frecuentes, /privacidad, /terminos,
+      // etc.) — no tocar la URL ni el estado activo, esas páginas no
+      // tienen anclas de scroll.
+      if (!document.getElementById("home")) return;
+
       const offset = 80;
       for (let i = SECTION_IDS.length - 1; i >= 0; i--) {
         const el = document.getElementById(SECTION_IDS[i]);
@@ -55,8 +61,16 @@ function useActiveSection() {
 }
 
 function scrollToSection(id: string) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  window.history.pushState(null, "", PATH_MAP[id] ?? "/");
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth" });
+    window.history.pushState(null, "", PATH_MAP[id] ?? "/");
+    return;
+  }
+  // La landing no está montada (estamos en /preguntas-frecuentes,
+  // /privacidad, /terminos, etc.) — navegación real en vez de pushState,
+  // para volver a montar el Home en la sección pedida.
+  window.location.href = PATH_MAP[id] ?? "/";
 }
 
 export function Navbar() {
