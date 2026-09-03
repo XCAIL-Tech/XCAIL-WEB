@@ -126,7 +126,7 @@ export function Pricing() {
   // El orden se establece como: Familiar (Cyan), Institutional (Violet - Highlighted en el centro), INCLUXIA Connect (Cyan)
   const cards = [
     { key: "familiar",      data: p.familiar,      accent: "#00BFFF", highlight: false, href: "https://asistea.app", external: true },
-    { key: "institutional", data: p.institutional, accent: "#5F33FF", highlight: true,  href: "#contacto" },
+    { key: "institutional", data: p.institutional, accent: "#5F33FF", highlight: true,  href: "/agendar" },
     { key: "ohm",           data: p.ohm,           accent: "#00BFFF", highlight: false, href: "https://incluxia.app/connect/planes", external: true },
   ] as const;
 

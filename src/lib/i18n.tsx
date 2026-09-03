@@ -354,6 +354,13 @@ const es = {
     about_link: "Quiénes somos",
     location: "CABA, Argentina",
   },
+  schedule: {
+    title: "Agendá una llamada",
+    subtitle:
+      "15 o 30 minutos con Carlos Leiva para conversar sobre tu consulta, propuesta o una posible colaboración con XCAIL Technologies. Sin compromiso.",
+    contact_prompt: "¿Preferís hablar en vivo?",
+    contact_cta: "Agendar una llamada",
+  },
 };
 
 const en: typeof es = {
@@ -705,6 +712,13 @@ const en: typeof es = {
     legal_title: "Legal",
     about_link: "About us",
     location: "Buenos Aires, Argentina",
+  },
+  schedule: {
+    title: "Book a call",
+    subtitle:
+      "15 or 30 minutes with Carlos Leiva to talk through your question, proposal, or a potential collaboration with XCAIL Technologies. No commitment.",
+    contact_prompt: "Prefer to talk live?",
+    contact_cta: "Book a call",
   },
 };
 

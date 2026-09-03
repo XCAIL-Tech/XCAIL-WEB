@@ -14,6 +14,8 @@ import Privacidad from "./pages/Privacidad";
 import Terminos from "./pages/Terminos";
 import AvisoLegal from "./pages/AvisoLegal";
 import Faq from "./pages/Faq";
+import Agendar from "./pages/Agendar";
+import { useCalInit } from "./lib/cal";
 import "./App.css";
 
 function Home() {
@@ -34,6 +36,8 @@ function Home() {
 }
 
 function App() {
+  useCalInit();
+
   return (
     <BrowserRouter>
       <Routes>
@@ -41,6 +45,7 @@ function App() {
         <Route path="/privacidad"        element={<Privacidad />} />
         <Route path="/terminos"          element={<Terminos />} />
         <Route path="/aviso-legal"       element={<AvisoLegal />} />
+        <Route path="/agendar"           element={<Agendar />} />
         <Route path="/preguntas-frecuentes" element={<Faq />} />
         <Route path="/admin/login"       element={<AdminLogin />} />
         <Route path="/admin/contactos"   element={<AdminContactos />} />

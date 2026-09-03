@@ -2,6 +2,7 @@ import { ArrowRight, Calendar } from "lucide-react";
 import { Button } from "./ui/button";
 import { useI18n } from "@/lib/i18n";
 import { NetworkBackground } from "./ui/NetworkBackground";
+import { calTriggerProps } from "@/lib/cal";
 
 export function Hero() {
   const { tr } = useI18n();
@@ -62,13 +63,12 @@ export function Hero() {
             </Button>
 
             <Button
-              asChild
+              type="button"
               variant="outline"
+              {...calTriggerProps}
               className="dark:bg-[#0d2d58]/60 dark:hover:bg-[#1a4e84]/80 bg-white/70 hover:bg-white dark:text-white text-foreground dark:border-[#1d5a96] dark:hover:border-[#2a6aaa] border-border px-6 py-6 text-sm font-semibold rounded-xl flex items-center justify-center gap-2 transition-all duration-300 shadow-md backdrop-blur-sm cursor-pointer"
             >
-              <a href={`mailto:contacto@xcail.com?subject=${encodeURIComponent("Agendar una llamada institucional")}`}>
-                <Calendar className="w-4 h-4" /> {h.cta_secondary}
-              </a>
+              <Calendar className="w-4 h-4" /> {h.cta_secondary}
             </Button>
           </div>
         </div>

@@ -2,11 +2,13 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 import { supabase } from "@/lib/supabase";
 import { useI18n } from "@/lib/i18n";
-import { Send } from "lucide-react";
+import { Send, CalendarClock } from "lucide-react";
+import { calTriggerProps } from "@/lib/cal";
 
 export function Contact() {
   const { tr } = useI18n();
   const c = tr.contact;
+  const sch = tr.schedule;
 
   const [formData, setFormData] = useState({
     name: "", email: "", subject: "", message: "",
@@ -77,6 +79,21 @@ export function Contact() {
             </span>
           </h2>
           <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">{c.subtitle}</p>
+        </div>
+
+        {/* Alternativa: agendar una llamada */}
+        <div className="max-w-6xl mx-auto mb-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 rounded-2xl border border-[#1d5a96]/50 bg-card/40 px-5 py-4 text-center">
+            <span className="text-sm text-slate-300">{sch.contact_prompt}</span>
+            <Button
+              type="button"
+              variant="outline"
+              {...calTriggerProps}
+              className="dark:bg-transparent dark:border-[#1d5a96] dark:hover:border-[#00BFFF] dark:hover:bg-[#00BFFF]/10 dark:text-white text-xs font-semibold rounded-xl gap-2 cursor-pointer"
+            >
+              <CalendarClock className="w-4 h-4" /> {sch.contact_cta}
+            </Button>
+          </div>
         </div>
 
         {/* Formulario full-width */}
