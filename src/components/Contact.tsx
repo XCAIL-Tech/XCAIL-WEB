@@ -2,13 +2,11 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 import { supabase } from "@/lib/supabase";
 import { useI18n } from "@/lib/i18n";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Send } from "lucide-react";
 
 export function Contact() {
   const { tr } = useI18n();
   const c = tr.contact;
-  const { ref, isVisible } = useScrollReveal();
 
   const [formData, setFormData] = useState({
     name: "", email: "", subject: "", message: "",
@@ -70,12 +68,7 @@ export function Contact() {
       {/* Luz decorativa */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70%] h-[35%] bg-[#00BFFF]/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div
-        ref={ref}
-        className={`container mx-auto relative z-10 transition-all duration-700 ease-out ${
-          isVisible ? "opacity-100" : "opacity-0"
-        }`}
-      >
+      <div className="container mx-auto relative z-10">
         {/* Encabezado */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 text-white">

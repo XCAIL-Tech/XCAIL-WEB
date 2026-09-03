@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight, ChevronLeft, ChevronRight,
   Calendar, Sparkles, Activity, Users, BarChart2, SlidersHorizontal,
@@ -6,7 +6,6 @@ import {
   Siren, TrafficCone, TimerReset, Cloud,
 } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 import type { LucideIcon } from "lucide-react";
 
 const ASISTEA_ICONS: LucideIcon[] = [Calendar, Sparkles, Activity, Users, BarChart2, SlidersHorizontal];
@@ -43,26 +42,34 @@ interface Screenshot { src: string; label: string; }
 const FRAME_ASPECT = "aspect-[4/3]";
 const SWIPE_THRESHOLD = 40;
 
-function ScreenshotSlide({ src, label, fallbackLogo }: { src: string; label: string; fallbackLogo: string }) {
+function ScreenshotSlide({ src, label, fallbackLogo, active }: {
+  src: string | undefined; label: string; fallbackLogo: string; active: boolean;
+}) {
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
 
   return (
-    <div className={`relative ${FRAME_ASPECT} dark:bg-[#071e3d] bg-slate-100 w-full h-full`}>
-      {!error && (
+    <div
+      className={`absolute inset-0 transition-opacity duration-500 ${
+        active ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+      }`}
+      aria-hidden={!active}
+    >
+      {src && !error && (
         <img
           src={src}
           alt={label}
           draggable={false}
-          className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 select-none ${
+          decoding="async"
+          className={`absolute inset-0 w-full h-full object-contain select-none transition-opacity duration-300 ${
             loaded ? "opacity-100" : "opacity-0"
           }`}
           onLoad={() => setLoaded(true)}
           onError={() => setError(true)}
         />
       )}
-      {(!loaded || error) && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-8">
+      {(!src || !loaded || error) && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-8 dark:bg-[#071e3d] bg-slate-100">
           <img src={fallbackLogo} alt="" className="w-24 h-auto opacity-30 animate-pulse" />
           <span className="text-[10px] tracking-wider text-slate-400 font-semibold bg-card border border-[#1d5a96] px-3.5 py-1.5 rounded-full shadow-inner">
             {label}
@@ -77,6 +84,22 @@ function ScreenshotCarousel({ slides, urlLabel, fallbackLogo }: { slides: Screen
   const [current, setCurrent] = useState(0);
   const total = slides.length;
   const touchX = useRef<number | null>(null);
+
+  // Precarga progresiva: solo pedimos al navegador la imagen actual, sus dos
+  // vecinas inmediatas y todo lo ya visitado. Así al deslizar la siguiente
+  // captura ya está en caché y aparece al instante, sin descargar de golpe
+  // las 6 imágenes en mobile.
+  const [warmed, setWarmed] = useState<Set<number>>(() => new Set([0]));
+  useEffect(() => {
+    setWarmed((prev) => {
+      if (prev.has((current + 1) % total) && prev.has((current - 1 + total) % total)) return prev;
+      const next = new Set(prev);
+      next.add(current);
+      next.add((current + 1) % total);
+      next.add((current - 1 + total) % total);
+      return next;
+    });
+  }, [current, total]);
 
   const goPrev = () => setCurrent((c) => (c - 1 + total) % total);
   const goNext = () => setCurrent((c) => (c + 1) % total);
@@ -113,7 +136,17 @@ function ScreenshotCarousel({ slides, urlLabel, fallbackLogo }: { slides: Screen
           </div>
         </div>
 
-        <ScreenshotSlide src={slides[current].src} label={slides[current].label} fallbackLogo={fallbackLogo} />
+        <div className={`relative ${FRAME_ASPECT} w-full overflow-hidden dark:bg-[#071e3d] bg-slate-100`}>
+          {slides.map((s, i) => (
+            <ScreenshotSlide
+              key={s.src}
+              src={warmed.has(i) ? s.src : undefined}
+              label={s.label}
+              fallbackLogo={fallbackLogo}
+              active={i === current}
+            />
+          ))}
+        </div>
 
         {/* Flechas overlay — semi-transparentes, visibles al pasar el mouse
             (desktop) y con opacidad baja constante en touch, como affordance
@@ -155,7 +188,6 @@ function ScreenshotCarousel({ slides, urlLabel, fallbackLogo }: { slides: Screen
 export function Products() {
   const { tr } = useI18n();
   const p = tr.products;
-  const { ref, isVisible } = useScrollReveal();
 
   return (
     <section id="products" className="bg-background relative">
@@ -163,12 +195,7 @@ export function Products() {
       <div className="absolute top-[20%] left-[-10%] w-[35%] h-[35%] bg-[#00BFFF]/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-[20%] right-[-10%] w-[35%] h-[35%] bg-[#5f33ff]/5 rounded-full blur-[100px] pointer-events-none" />
 
-      <div
-        ref={ref}
-        className={`container mx-auto py-24 lg:py-32 transition-all duration-700 ease-out ${
-          isVisible ? "opacity-100" : "opacity-0"
-        }`}
-      >
+      <div className="container mx-auto py-24 lg:py-32">
         {/* Encabezado */}
         <div className="text-center mb-20">
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 text-white">

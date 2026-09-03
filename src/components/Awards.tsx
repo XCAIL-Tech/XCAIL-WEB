@@ -1,23 +1,16 @@
 ﻿import { useI18n } from "@/lib/i18n";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Award, ExternalLink } from "lucide-react";
 
 export function Awards() {
   const { tr } = useI18n();
   const a = tr.awards;
-  const { ref, isVisible } = useScrollReveal();
 
   return (
     <section id="awards" className="bg-background relative py-20 sm:py-24">
       {/* Luz decorativa */}
       <div className="absolute top-[30%] left-[-10%] w-[35%] h-[35%] bg-[#5f33ff]/5 rounded-full blur-[115px] pointer-events-none" />
 
-      <div
-        ref={ref}
-        className={`container mx-auto relative z-10 transition-all duration-700 ease-out ${
-          isVisible ? "opacity-100" : "opacity-0"
-        }`}
-      >
+      <div className="container mx-auto relative z-10">
         {/* Encabezado */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 text-white">
@@ -52,7 +45,7 @@ export function Awards() {
               <figure className="space-y-2 group">
                 <div className="w-full rounded-xl border border-[#1d5a96] dark:bg-[#071e3d] bg-slate-50 flex items-center justify-center p-4 h-[240px] overflow-hidden transition-all duration-300 group-hover:border-[#00BFFF]/50">
                   <img
-                    src="/media/reconocimientos/britcham/certificado-dei.jpg"
+                    src="/media/reconocimientos/britcham/certificado-dei.webp"
                     alt="Certificado oficial BritCham DEI"
                     className="max-w-full max-h-full object-contain rounded-lg transition-transform duration-500 group-hover:scale-105"
                   />
@@ -63,7 +56,7 @@ export function Awards() {
               <figure className="space-y-2 group">
                 <div className="w-full rounded-xl border border-[#1d5a96] dark:bg-[#071e3d] bg-slate-50 flex items-center justify-center p-4 h-[240px] overflow-hidden transition-all duration-300 group-hover:border-[#00BFFF]/50">
                   <img
-                    src="/media/reconocimientos/britcham/foto-embajador-directivos.jpeg"
+                    src="/media/reconocimientos/britcham/foto-embajador-directivos.webp"
                     alt="Ceremonia BritCham con embajador británico"
                     className="max-w-full max-h-full object-contain rounded-lg transition-transform duration-500 group-hover:scale-105"
                   />
@@ -74,7 +67,7 @@ export function Awards() {
               <figure className="space-y-2 group">
                 <div className="w-full rounded-xl border border-[#1d5a96] dark:bg-[#071e3d] bg-slate-50 flex items-center justify-center p-4 h-[240px] overflow-hidden transition-all duration-300 group-hover:border-[#00BFFF]/50">
                   <img
-                    src="/media/reconocimientos/britcham/entrega-jurado-embajada.jpg"
+                    src="/media/reconocimientos/britcham/entrega-jurado-embajada.webp"
                     alt="Entrega del reconocimiento en la Embajada Británica"
                     className="max-w-full max-h-full object-contain rounded-lg transition-transform duration-500 group-hover:scale-105"
                   />
@@ -105,14 +98,14 @@ export function Awards() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
               <div className="group rounded-xl border border-[#1d5a96] dark:bg-[#071e3d] bg-slate-50 p-4 flex items-center justify-center h-[280px] overflow-hidden transition-all duration-300 group-hover:border-[#00BFFF]/50">
                 <img
-                  src="/media/reconocimientos/sadosky/certificado-innovacion-transformadora.png"
+                  src="/media/reconocimientos/sadosky/certificado-innovacion-transformadora.webp"
                   alt="Certificado Innovación Transformadora — Premios Sadosky 2025"
                   className="max-w-full max-h-full object-contain rounded-lg transition-transform duration-500 group-hover:scale-102"
                 />
               </div>
               <div className="group rounded-xl border border-[#1d5a96] dark:bg-[#071e3d] bg-slate-50 p-4 flex items-center justify-center h-[280px] overflow-hidden transition-all duration-300 group-hover:border-[#00BFFF]/50">
                 <img
-                  src="/media/reconocimientos/sadosky/certificado-impacto-digital.png"
+                  src="/media/reconocimientos/sadosky/certificado-impacto-digital.webp"
                   alt="Certificado Impacto Digital — Premios Sadosky 2025"
                   className="max-w-full max-h-full object-contain rounded-lg transition-transform duration-500 group-hover:scale-102"
                 />
@@ -149,7 +142,7 @@ export function Awards() {
               <figure className="space-y-2 group">
                 <div className="w-full rounded-xl border border-[#1d5a96] dark:bg-[#071e3d] bg-slate-50 flex items-center justify-center p-4 h-[280px] overflow-hidden transition-all duration-300 group-hover:border-[#00BFFF]/50">
                   <img
-                    src="/media/reconocimientos/premios-verdes/500M.gif"
+                    src="/media/reconocimientos/premios-verdes/500M.webp"
                     alt="AsisTEA — Top 500 Premios Verdes 2026"
                     className="max-w-full max-h-full object-contain rounded-lg transition-transform duration-500 group-hover:scale-105"
                   />
@@ -159,7 +152,7 @@ export function Awards() {
               <figure className="space-y-2 group">
                 <div className="w-full rounded-xl border border-[#1d5a96] dark:bg-[#071e3d] bg-slate-50 flex items-center justify-center p-4 h-[280px] overflow-hidden transition-all duration-300 group-hover:border-[#00BFFF]/50">
                   <img
-                    src="/media/reconocimientos/premios-verdes/certificado_participacion.png"
+                    src="/media/reconocimientos/premios-verdes/certificado_participacion.webp"
                     alt="Certificado oficial de participación — Premios Verdes 2026"
                     className="max-w-full max-h-full object-contain rounded-lg transition-transform duration-500 group-hover:scale-105"
                   />

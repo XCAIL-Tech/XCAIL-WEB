@@ -1,5 +1,4 @@
 ﻿import { useI18n } from "@/lib/i18n";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Linkedin } from "lucide-react";
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
@@ -13,19 +12,13 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 export function About() {
   const { tr } = useI18n();
   const a = tr.about;
-  const { ref, isVisible } = useScrollReveal();
 
   return (
     <section id="about" className="bg-background relative py-20 sm:py-28">
       {/* Luces decorativas */}
       <div className="absolute top-[10%] right-[-10%] w-[35%] h-[35%] bg-[#5f33ff]/5 rounded-full blur-[110px] pointer-events-none" />
 
-      <div
-        ref={ref}
-        className={`container mx-auto relative z-10 transition-all duration-700 ease-out ${
-          isVisible ? "opacity-100" : "opacity-0"
-        }`}
-      >
+      <div className="container mx-auto relative z-10">
         {/* Encabezado de Sección */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 text-white">

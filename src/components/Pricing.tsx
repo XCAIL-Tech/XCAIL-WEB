@@ -1,7 +1,6 @@
 ﻿import { useState } from "react";
 import { Check } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 interface PricingCardProps {
   badge: string;
@@ -15,14 +14,11 @@ interface PricingCardProps {
   external?: boolean;
   accent: string;
   highlight?: boolean;
-  delay: number;
-  isVisible: boolean;
 }
 
 function PricingCard({
   badge, title, subtitle, price, priceNote,
   features, cta, href, external, accent, highlight,
-  delay, isVisible,
 }: PricingCardProps) {
   const [cardHovered, setCardHovered] = useState(false);
 
@@ -43,12 +39,9 @@ function PricingCard({
       onMouseEnter={() => supportsHover() && setCardHovered(true)}
       onMouseLeave={() => supportsHover() && setCardHovered(false)}
       className={`relative flex flex-col gap-6 rounded-2xl border p-6 lg:p-8 backdrop-blur-md transition-all duration-300 ease-out ${
-        isVisible ? "opacity-100" : "opacity-0"
-      } ${highlight ? "bg-card/85 lg:-translate-y-3 z-10" : "bg-card/60"}`}
-      style={{
-        transitionDelay: isVisible ? `${delay}ms` : "0ms",
-        ...cardStyle,
-      }}
+        highlight ? "bg-card/85 lg:-translate-y-3 z-10" : "bg-card/60"
+      }`}
+      style={cardStyle}
     >
       {/* Popular/Active Badge */}
       {highlight && (
@@ -129,13 +122,12 @@ function PricingCard({
 export function Pricing() {
   const { tr } = useI18n();
   const p = tr.pricing;
-  const { ref, isVisible } = useScrollReveal();
 
   // El orden se establece como: Familiar (Cyan), Institutional (Violet - Highlighted en el centro), INCLUXIA Connect (Cyan)
   const cards = [
-    { key: "familiar",      data: p.familiar,      delay: 0,   accent: "#00BFFF", highlight: false, href: "https://asistea.app", external: true },
-    { key: "institutional", data: p.institutional, delay: 150, accent: "#5F33FF", highlight: true,  href: "#contacto" },
-    { key: "ohm",           data: p.ohm,           delay: 300, accent: "#00BFFF", highlight: false, href: "https://incluxia.app/connect/planes", external: true },
+    { key: "familiar",      data: p.familiar,      accent: "#00BFFF", highlight: false, href: "https://asistea.app", external: true },
+    { key: "institutional", data: p.institutional, accent: "#5F33FF", highlight: true,  href: "#contacto" },
+    { key: "ohm",           data: p.ohm,           accent: "#00BFFF", highlight: false, href: "https://incluxia.app/connect/planes", external: true },
   ] as const;
 
   return (
@@ -143,14 +135,10 @@ export function Pricing() {
       {/* Glows de fondo */}
       <div className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[60%] h-[40%] bg-[#5f33ff]/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div ref={ref} className="container mx-auto relative z-10">
+      <div className="container mx-auto relative z-10">
 
         {/* Encabezado */}
-        <div
-          className={`text-center mb-16 transition-all duration-700 ease-out ${
-            isVisible ? "opacity-100" : "opacity-0"
-          }`}
-        >
+        <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 text-white">
             <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 text-transparent bg-clip-text">
               {p.title}
@@ -161,7 +149,7 @@ export function Pricing() {
 
         {/* Cuadrícula de Tarjetas de Planes */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch mb-12">
-          {cards.map(({ key, data, delay, accent, highlight, href, ...rest }) => (
+          {cards.map(({ key, data, accent, highlight, href, ...rest }) => (
             <PricingCard
               key={key}
               badge={data.badge}
@@ -174,8 +162,6 @@ export function Pricing() {
               href={href}
               accent={accent}
               highlight={highlight}
-              delay={delay}
-              isVisible={isVisible}
               {...("external" in rest ? rest : {})}
             />
           ))}
