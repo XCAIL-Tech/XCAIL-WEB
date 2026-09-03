@@ -111,38 +111,31 @@ export function About() {
         <div className="glass-card rounded-2xl p-6 lg:p-8 max-w-6xl mx-auto space-y-6 mb-12">
           <SectionHeading>{a.leadership_title}</SectionHeading>
 
-          <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-6 items-start">
-            <div className="flex flex-col items-center sm:items-start gap-4 sm:w-44">
-              <div className="w-28 h-28 rounded-2xl overflow-hidden border border-[#00BFFF]/30 shrink-0 shadow-[0_8px_25px_rgba(0,0,0,0.3)]">
+          <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-6 sm:gap-8 items-start">
+            {/* Columna de identidad — todo al ancho de la foto */}
+            <div className="flex flex-col items-center gap-3 w-36 mx-auto sm:mx-0">
+              <div className="w-full aspect-[4/5] rounded-2xl overflow-hidden border border-[#00BFFF]/30 shadow-[0_8px_25px_rgba(0,0,0,0.3)]">
                 <img
                   src="/media/equipo/carlos.jpg"
-                  alt="Carlos Ezequiel Leiva — Founder & CEO"
-                  className="w-full h-full object-cover"
+                  alt="Carlos Ezequiel Leiva — Founder & CEO de XCAIL Technologies"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
-              <div className="text-center sm:text-left">
-                <p className="font-extrabold text-sm text-white">{a.founder_name}</p>
-                <p className="text-[10px] text-[#00BFFF] font-bold tracking-wide mt-1 uppercase">{a.founder_role}</p>
+              <div className="text-center">
+                <p className="font-bold text-[12px] tracking-tight text-white whitespace-nowrap">{a.founder_name}</p>
+                <p className="text-[10px] text-[#00BFFF] font-bold tracking-wide mt-1 uppercase leading-relaxed">
+                  {a.founder_role}<br />{a.founder_org}
+                </p>
               </div>
-              <div className="flex flex-col gap-2 w-full">
-                <a
-                  href="https://www.linkedin.com/in/c-e-leiva"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-1.5 bg-[#0A66C2] text-white text-[10px] font-bold uppercase tracking-wider py-2.5 rounded-xl hover:bg-[#0958a8] transition-colors"
-                >
-                  <Linkedin className="w-3.5 h-3.5" />
-                  {a.linkedin_btn}
-                </a>
-                <a
-                  href="https://www.linkedin.com/company/xcail-technologies/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-1.5 bg-transparent border border-[#0A66C2] text-[#0A66C2] text-[10px] font-bold uppercase tracking-wider py-2.5 rounded-xl hover:bg-[#0A66C2]/10 transition-colors"
-                >
-                  {a.company_linkedin}
-                </a>
-              </div>
+              <a
+                href="https://www.linkedin.com/in/c-e-leiva"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-center gap-1.5 bg-[#0A66C2] text-white text-[10px] font-bold uppercase tracking-wider py-2.5 rounded-xl hover:bg-[#0958a8] transition-colors"
+              >
+                <Linkedin className="w-3.5 h-3.5" />
+                {a.linkedin_btn}
+              </a>
             </div>
 
             <div className="space-y-3">

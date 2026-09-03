@@ -126,7 +126,7 @@ body {
 
   .dark {
     --xcail-hero: 232 82% 11%;   /* #050b33 — Hero + Navbar en modo oscuro */
-    --background: 240 100% 6.3%; /* #000020 — secciones */
+    --background: 233 53% 3.3%; /* #04050D — secciones (casi negro, tinte frío) */
     --foreground: 210 30% 96%;
     --muted: 220 50% 18%;
     --muted-foreground: 210 20% 65%;
