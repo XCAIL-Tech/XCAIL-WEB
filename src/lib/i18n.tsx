@@ -47,8 +47,10 @@ const es = {
       badge: "Beta Activa",
       title: "AsisTEA",
       subtitle: "Acompañamiento inteligente para familias, cuidadores y profesionales.",
-      description:
-        "Una plataforma diseñada para organizar rutinas, generar acompañamiento personalizado mediante inteligencia artificial y facilitar el seguimiento diario desde un único espacio digital.",
+      description: [
+        "AsisTEA es la infraestructura digital de XCAIL Technologies para el neurodesarrollo y la neurodiversidad. No es una herramienta clínica: es un espacio de apoyo, planificación y seguimiento que baja la carga cognitiva de quienes acompañan a una persona autista.",
+        "En un mismo lugar, familias, adultos en autogestión, profesionales de la salud y aliados organizan rutinas, generan guías personalizadas y registran la evolución del día a día — con reportes que se comparten con todo el equipo de acompañamiento.",
+      ],
       how_it_works_title: "Cómo funciona AsisTEA",
       how_it_works: [
         { step: "01", title: "Creá el perfil", desc: "Configurá las necesidades, preferencias de comunicación y objetivos diarios del usuario." },
@@ -78,15 +80,17 @@ const es = {
       badge: "Disponible",
       title: "INCLUXIA Connect",
       subtitle: "Comunicador aumentativo y alternativo impulsado por barrido automático.",
-      description:
-        "INCLUXIA Connect es un comunicador (AAC) para personas con discapacidad motora y del habla — ELA, parálisis cerebral, lesión medular, secuelas de ACV, enfermedades neuromusculares. Con un solo movimiento voluntario, sin apuntar ni tocar directamente, permite escribir y convertir texto en voz.",
+      description: [
+        "INCLUXIA Connect le devuelve la voz a personas con discapacidad motora y del habla — ELA, parálisis cerebral, lesión medular, secuelas de ACV, enfermedades neuromusculares. Todo se opera con un único movimiento voluntario: el sistema recorre solo el teclado (barrido) y la persona confirma en el momento justo.",
+        "La confirmación se hace con un switch/pulsador o con un guiño detectado por la cámara, que se procesa en el propio dispositivo — el video nunca se transmite ni se guarda. Las funciones esenciales trabajan sin conexión.",
+      ],
       features: [
         { title: "Barrido inteligente", desc: "Un solo movimiento controla todo el teclado." },
         { title: "Predicción de palabras offline", desc: "Anticipa palabras en español, sin conexión." },
         { title: "Guiño por cámara", desc: "Detección de parpadeo procesada en el propio dispositivo, nunca se transmite." },
         { title: "Texto a voz", desc: "Convierte cada mensaje en voz al instante." },
         { title: "Offline-first", desc: "Las funciones esenciales funcionan sin conexión a internet." },
-        { title: "Instalable como app", desc: "Funciona como aplicación (PWA) en cualquier dispositivo, sin tiendas de apps." },
+        { title: "Se instala como app", desc: "Se instala desde el navegador como PWA, sin tiendas de apps. Pensada para notebook, tablet o PC." },
       ],
       cta: "Conocer INCLUXIA Connect",
       screenshots: [
@@ -102,17 +106,19 @@ const es = {
       badge: "En desarrollo",
       title: "INCLUXIA Stroke",
       subtitle: "Reconocimiento temprano de señales de ACV.",
-      description:
-        "INCLUXIA Stroke guía a la persona a reconocer señales de alerta de ACV mediante el protocolo FAST/BE-FAST, con un semáforo de riesgo y un cronómetro de activación, para ayudar a actuar en los minutos que más importan. No reemplaza la atención médica de emergencia.",
+      description: [
+        "INCLUXIA Stroke acompaña el tramo más crítico y menos cubierto de un ACV: los minutos previos a llegar al hospital. Guía a reconocer las señales de alerta con el protocolo internacional FAST/BE-FAST —una pregunta por pantalla, con pictogramas— y las traduce en un semáforo de riesgo y un cronómetro anclado a la hora del primer síntoma.",
+        "Con riesgo alto, un solo toque llama a emergencias, comparte la ubicación y el perfil médico precargado —medicación, alergias, antecedentes— y avisa a la red de apoyo. Nunca diagnostica: orienta y ayuda a actuar dentro de la ventana de 4,5 horas en la que el tratamiento es efectivo.",
+      ],
       features: [
         { title: "Reconocimiento FAST/BE-FAST", desc: "Guía a evaluar señales de alerta paso a paso." },
         { title: "Semáforo de riesgo", desc: "Traduce la evaluación en un nivel de riesgo claro." },
         { title: "Cronómetro de activación", desc: "Acompaña desde el primer síntoma detectado." },
+        { title: "Perfil de emergencia", desc: "Contactos, medicación, alergias y antecedentes cargados en calma, listos para compartir." },
+        { title: "Activación en un toque", desc: "Llama a emergencias, comparte tu ubicación y avisa a tus contactos, todo a la vez." },
+        { title: "Alerta a la red de apoyo", desc: "Notifica en simultáneo a familiares y cuidadores con el resumen de la situación." },
       ],
       cta: "Conocer INCLUXIA Stroke",
-      video_label: "INCLUXIA Stroke",
-      video_soon: "En desarrollo hacia su lanzamiento público",
-      video_steps: ["Señales FAST/BE-FAST", "Semáforo de riesgo", "Cronómetro de activación"],
       screenshots: [
         { src: "/media/productos/incluxia-stroke/00-INCLUXIA-STROKE-Reconocimiento-y-Respuesta.webp", label: "Reconocimiento y respuesta" },
       ],
@@ -337,6 +343,7 @@ const es = {
     tagline: "Tecnología con Propósito",
     privacy: "Política de Privacidad",
     terms: "Términos y Condiciones",
+    aviso_legal: "Aviso Legal",
     linkedin: "LinkedIn",
     rights: "Todos los derechos reservados",
     products_title: "Productos",
@@ -344,6 +351,7 @@ const es = {
     company_title: "Empresa",
     legal_title: "Legal",
     about_link: "Quiénes somos",
+    location: "CABA, Argentina",
   },
 };
 
@@ -391,8 +399,10 @@ const en: typeof es = {
       badge: "Active Beta",
       title: "AsisTEA",
       subtitle: "Intelligent support for families, caregivers, and professionals.",
-      description:
-        "A platform designed to organize routines, generate personalized AI-powered support, and facilitate daily tracking from a single digital space.",
+      description: [
+        "AsisTEA is XCAIL Technologies' digital infrastructure for neurodevelopment and neurodiversity. It is not a clinical tool: it is a space for support, planning, and tracking that lowers the cognitive load on those who care for an autistic person.",
+        "In one place, families, self-managing adults, health professionals, and allies organize routines, generate personalized guides, and log day-to-day progress — with reports shared across the whole support team.",
+      ],
       how_it_works_title: "How AsisTEA works",
       how_it_works: [
         { step: "01", title: "Create the profile", desc: "Set up the user's needs, communication preferences, and daily goals." },
@@ -422,15 +432,17 @@ const en: typeof es = {
       badge: "Available",
       title: "INCLUXIA Connect",
       subtitle: "Augmentative and alternative communicator powered by automatic scanning.",
-      description:
-        "INCLUXIA Connect is an AAC communicator for people with motor and speech disabilities — ALS, cerebral palsy, spinal cord injury, stroke after-effects, neuromuscular diseases. With a single voluntary movement, no pointing or direct touch required, it lets people write and convert text to speech.",
+      description: [
+        "INCLUXIA Connect gives a voice back to people with motor and speech disabilities — ALS, cerebral palsy, spinal cord injury, stroke after-effects, neuromuscular diseases. Everything is operated with a single voluntary movement: the system scans across the keyboard on its own and the person confirms at the right moment.",
+        "Confirmation happens with a switch/button or with a blink detected by the camera, processed on the device itself — the video is never transmitted or stored. Core features work offline.",
+      ],
       features: [
         { title: "Smart scanning", desc: "A single movement controls the entire keyboard." },
         { title: "Offline word prediction", desc: "Anticipates words in Spanish, no connection needed." },
         { title: "Camera-based blink access", desc: "Blink detection processed on-device, never transmitted." },
         { title: "Text to speech", desc: "Converts every message to voice instantly." },
         { title: "Offline-first", desc: "Core features work without an internet connection." },
-        { title: "Installable as an app", desc: "Works as an app (PWA) on any device, no app stores needed." },
+        { title: "Installs as an app", desc: "Installs from the browser as a PWA, no app stores. Built for laptop, tablet, or PC." },
       ],
       cta: "Discover INCLUXIA Connect",
       screenshots: [
@@ -446,17 +458,19 @@ const en: typeof es = {
       badge: "In development",
       title: "INCLUXIA Stroke",
       subtitle: "Early recognition of stroke warning signs.",
-      description:
-        "INCLUXIA Stroke guides a person through recognizing stroke warning signs using the FAST/BE-FAST protocol, with a clear risk level and an activation timer, to help act during the minutes that matter most. It does not replace emergency medical care.",
+      description: [
+        "INCLUXIA Stroke covers the most critical and least-served stretch of a stroke: the minutes before reaching the hospital. It guides warning-sign recognition with the international FAST/BE-FAST protocol —one question per screen, with pictograms— and translates it into a risk level and a timer anchored to the time of the first symptom.",
+        "At high risk, a single tap calls emergency services, shares the location and the pre-loaded medical profile —medication, allergies, history— and alerts the support network. It never diagnoses: it guides and helps act within the 4.5-hour window in which treatment is effective.",
+      ],
       features: [
         { title: "FAST/BE-FAST recognition", desc: "Guides a step-by-step warning-sign assessment." },
         { title: "Risk level indicator", desc: "Translates the assessment into a clear risk level." },
         { title: "Activation timer", desc: "Tracks time from the first detected symptom." },
+        { title: "Emergency profile", desc: "Contacts, medication, allergies, and history set up in calm, ready to share." },
+        { title: "One-tap activation", desc: "Calls emergency services, shares your location, and alerts your contacts at once." },
+        { title: "Support-network alert", desc: "Notifies family and caregivers simultaneously with a summary of the situation." },
       ],
       cta: "Discover INCLUXIA Stroke",
-      video_label: "INCLUXIA Stroke",
-      video_soon: "In development toward public launch",
-      video_steps: ["FAST/BE-FAST signs", "Risk level", "Activation timer"],
       screenshots: [
         { src: "/media/productos/incluxia-stroke/00-INCLUXIA-STROKE-Reconocimiento-y-Respuesta.webp", label: "Recognition and response" },
       ],
@@ -680,6 +694,7 @@ const en: typeof es = {
     tagline: "Technology with Purpose",
     privacy: "Privacy Policy",
     terms: "Terms & Conditions",
+    aviso_legal: "Legal Notice",
     linkedin: "LinkedIn",
     rights: "All rights reserved",
     products_title: "Products",
@@ -687,6 +702,7 @@ const en: typeof es = {
     company_title: "Company",
     legal_title: "Legal",
     about_link: "About us",
+    location: "Buenos Aires, Argentina",
   },
 };
 

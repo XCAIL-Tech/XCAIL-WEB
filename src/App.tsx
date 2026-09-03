@@ -12,6 +12,7 @@ import AdminLogin from "./pages/AdminLogin";
 import AdminContactos from "./pages/AdminContactos";
 import Privacidad from "./pages/Privacidad";
 import Terminos from "./pages/Terminos";
+import AvisoLegal from "./pages/AvisoLegal";
 import Faq from "./pages/Faq";
 import "./App.css";
 
@@ -39,6 +40,7 @@ function App() {
         {/* Páginas independientes — deben ir antes del catch-all */}
         <Route path="/privacidad"        element={<Privacidad />} />
         <Route path="/terminos"          element={<Terminos />} />
+        <Route path="/aviso-legal"       element={<AvisoLegal />} />
         <Route path="/preguntas-frecuentes" element={<Faq />} />
         <Route path="/admin/login"       element={<AdminLogin />} />
         <Route path="/admin/contactos"   element={<AdminContactos />} />

@@ -3,14 +3,14 @@ import {
   ArrowRight, ChevronLeft, ChevronRight,
   Calendar, Sparkles, Activity, Users, BarChart2, SlidersHorizontal,
   ScanLine, WifiOff, Eye, Volume2, Smartphone,
-  Siren, TrafficCone, TimerReset, Cloud,
+  Siren, TrafficCone, TimerReset, ClipboardList, PhoneCall, BellRing, Cloud,
 } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import type { LucideIcon } from "lucide-react";
 
 const ASISTEA_ICONS: LucideIcon[] = [Calendar, Sparkles, Activity, Users, BarChart2, SlidersHorizontal];
 const CONNECT_ICONS: LucideIcon[] = [ScanLine, Sparkles, Eye, Volume2, WifiOff, Smartphone];
-const STROKE_ICONS: LucideIcon[]  = [Siren, TrafficCone, TimerReset];
+const STROKE_ICONS: LucideIcon[]  = [Siren, TrafficCone, TimerReset, ClipboardList, PhoneCall, BellRing];
 
 function FeatureCard({ title, desc, icon: Icon, accent }: {
   title: string; desc: string; icon: LucideIcon; accent: string;
@@ -34,6 +34,16 @@ function FeatureCard({ title, desc, icon: Icon, accent }: {
   );
 }
 
+function ProductDescription({ paragraphs }: { paragraphs: readonly string[] }) {
+  return (
+    <div className="space-y-3">
+      {paragraphs.map((par, i) => (
+        <p key={i} className="text-sm text-slate-400 leading-relaxed">{par}</p>
+      ))}
+    </div>
+  );
+}
+
 interface Screenshot { src: string; label: string; }
 
 // Alto fijo compartido por AsisTEA / Connect / Stroke — así los tres frames
@@ -51,7 +61,7 @@ function ScreenshotSlide({ src, label, fallbackLogo, active }: {
   return (
     <div
       className={`absolute inset-0 transition-opacity duration-500 ${
-        active ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+        active ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
       aria-hidden={!active}
     >
@@ -156,19 +166,19 @@ function ScreenshotCarousel({ slides, urlLabel, fallbackLogo }: { slides: Screen
             <button
               onClick={goPrev}
               aria-label="Anterior"
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 backdrop-blur-sm text-white flex items-center justify-center opacity-40 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/70"
+              className="absolute z-20 left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 backdrop-blur-sm text-white flex items-center justify-center opacity-60 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/70"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={goNext}
               aria-label="Siguiente"
-              className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 backdrop-blur-sm text-white flex items-center justify-center opacity-40 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/70"
+              className="absolute z-20 right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 backdrop-blur-sm text-white flex items-center justify-center opacity-60 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/70"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
             {/* Indicador de posición — sutil, dentro del marco */}
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+            <div className="absolute z-20 bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
               {slides.map((_, i) => (
                 <span
                   key={i}
@@ -220,7 +230,7 @@ export function Products() {
                   <h3 className="text-3xl lg:text-4xl font-extrabold text-white leading-tight">{p.asistea.title}</h3>
                   <p className="text-base text-[#00BFFF] font-medium leading-snug mt-2">{p.asistea.subtitle}</p>
                 </div>
-                <p className="text-sm text-slate-400 leading-relaxed">{p.asistea.description}</p>
+                <ProductDescription paragraphs={p.asistea.description} />
 
                 <a
                   href="https://asistea.app"
@@ -283,7 +293,7 @@ export function Products() {
                   <h3 className="text-3xl lg:text-4xl font-extrabold text-white leading-tight">{p.ohm.title}</h3>
                   <p className="text-base text-[#00BFFF] font-medium leading-snug mt-2">{p.ohm.subtitle}</p>
                 </div>
-                <p className="text-sm text-slate-400 leading-relaxed">{p.ohm.description}</p>
+                <ProductDescription paragraphs={p.ohm.description} />
 
                 <a
                   href="https://incluxia.app/connect"
@@ -321,7 +331,7 @@ export function Products() {
                   <h3 className="text-3xl lg:text-4xl font-extrabold text-white leading-tight">{p.stroke.title}</h3>
                   <p className="text-base text-[#fca311] font-medium leading-snug mt-2">{p.stroke.subtitle}</p>
                 </div>
-                <p className="text-sm text-slate-400 leading-relaxed">{p.stroke.description}</p>
+                <ProductDescription paragraphs={p.stroke.description} />
 
                 <a
                   href="https://incluxia.app/stroke"

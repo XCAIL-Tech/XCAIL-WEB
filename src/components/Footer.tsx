@@ -1,4 +1,4 @@
-import { Mail, Linkedin, Instagram, Package, Users, ShieldCheck, Building2 } from "lucide-react";
+import { Mail, Linkedin, Instagram, Package, Users, ShieldCheck } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import type { LucideIcon } from "lucide-react";
 
@@ -34,13 +34,14 @@ export function Footer() {
   const legalLinks = [
     { label: f.privacy, href: "/privacidad" },
     { label: f.terms, href: "/terminos" },
+    { label: f.aviso_legal, href: "/aviso-legal" },
   ];
 
   return (
     <footer id="footer" className="border-t dark:border-white/[0.07] border-border bg-slate-100 dark:bg-black">
       <div className="container py-12">
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-10 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10 mb-8">
 
           {/* Marca */}
           <div className="flex flex-col gap-4">
@@ -135,17 +136,8 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
-
-          {/* Datos corporativos */}
-          <div>
-            <ColumnHeading icon={Building2}>{c.legal_name}</ColumnHeading>
-            <div className="space-y-1.5">
-              <p className="text-sm text-muted-foreground">
-                <span className="text-foreground/70 font-medium">{c.cuit_label}</span>
-                {" "}<span className="font-mono tracking-wide">{c.cuit}</span>
-              </p>
-              <p className="text-sm text-muted-foreground">{c.address}</p>
+            <div className="mt-4 pt-4 border-t dark:border-white/[0.07] border-border space-y-1.5">
+              <p className="text-sm text-muted-foreground">{f.location}</p>
               <a
                 href="mailto:contacto@xcail.com"
                 className="block text-sm text-muted-foreground hover:text-[#00BFFF] transition-colors"
