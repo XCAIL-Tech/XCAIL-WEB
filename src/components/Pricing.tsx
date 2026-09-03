@@ -1,6 +1,7 @@
 ﻿import { useState } from "react";
 import { Check } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
+import { calTriggerProps } from "@/lib/cal";
 
 interface PricingCardProps {
   badge: string;
@@ -10,15 +11,17 @@ interface PricingCardProps {
   priceNote: string;
   features: string[];
   cta: string;
-  href: string;
+  href?: string;
   external?: boolean;
+  /** Si es true, el CTA abre el modal de Cal.com en vez de navegar. */
+  calModal?: boolean;
   accent: string;
   highlight?: boolean;
 }
 
 function PricingCard({
   badge, title, subtitle, price, priceNote,
-  features, cta, href, external, accent, highlight,
+  features, cta, href, external, calModal, accent, highlight,
 }: PricingCardProps) {
   const [cardHovered, setCardHovered] = useState(false);
 
@@ -90,31 +93,35 @@ function PricingCard({
         ))}
       </ul>
 
-      {/* CTA Button */}
-      {highlight ? (
-        <a
-          href={href}
-          target={external ? "_blank" : undefined}
-          rel={external ? "noopener noreferrer" : undefined}
-          className="w-full text-center py-3.5 text-xs font-bold uppercase tracking-wider rounded-xl transition-all duration-300 btn-primary-gradient block mt-auto"
-        >
-          {cta}
-        </a>
-      ) : (
-        <a
-          href={href}
-          target={external ? "_blank" : undefined}
-          rel={external ? "noopener noreferrer" : undefined}
-          className="w-full text-center py-3.5 text-xs font-bold uppercase tracking-wider rounded-xl transition-all duration-300 border border-slate-700 hover:border-white text-white hover:bg-white hover:text-black block mt-auto"
-          style={{
-            borderColor: `${accent}60`,
-            color: cardHovered ? "#fff" : accent,
-            backgroundColor: cardHovered ? `${accent}10` : "transparent",
-          }}
-        >
-          {cta}
-        </a>
-      )}
+      {/* CTA */}
+      {(() => {
+        const ctaClassName = highlight
+          ? "w-full text-center py-3.5 text-xs font-bold uppercase tracking-wider rounded-xl transition-all duration-300 btn-primary-gradient block mt-auto cursor-pointer"
+          : "w-full text-center py-3.5 text-xs font-bold uppercase tracking-wider rounded-xl transition-all duration-300 border border-slate-700 hover:border-white text-white hover:bg-white hover:text-black block mt-auto cursor-pointer";
+        const ctaStyle = highlight
+          ? undefined
+          : {
+              borderColor: `${accent}60`,
+              color: cardHovered ? "#fff" : accent,
+              backgroundColor: cardHovered ? `${accent}10` : "transparent",
+            };
+
+        return calModal ? (
+          <button type="button" {...calTriggerProps} className={ctaClassName} style={ctaStyle}>
+            {cta}
+          </button>
+        ) : (
+          <a
+            href={href}
+            target={external ? "_blank" : undefined}
+            rel={external ? "noopener noreferrer" : undefined}
+            className={ctaClassName}
+            style={ctaStyle}
+          >
+            {cta}
+          </a>
+        );
+      })()}
     </div>
   );
 }
@@ -126,7 +133,7 @@ export function Pricing() {
   // El orden se establece como: Familiar (Cyan), Institutional (Violet - Highlighted en el centro), INCLUXIA Connect (Cyan)
   const cards = [
     { key: "familiar",      data: p.familiar,      accent: "#00BFFF", highlight: false, href: "https://asistea.app", external: true },
-    { key: "institutional", data: p.institutional, accent: "#5F33FF", highlight: true,  href: "/agendar" },
+    { key: "institutional", data: p.institutional, accent: "#5F33FF", highlight: true,  calModal: true },
     { key: "ohm",           data: p.ohm,           accent: "#00BFFF", highlight: false, href: "https://incluxia.app/connect/planes", external: true },
   ] as const;
 
@@ -149,20 +156,21 @@ export function Pricing() {
 
         {/* Cuadrícula de Tarjetas de Planes */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch mb-12">
-          {cards.map(({ key, data, accent, highlight, href, ...rest }) => (
+          {cards.map((card) => (
             <PricingCard
-              key={key}
-              badge={data.badge}
-              title={data.title}
-              subtitle={data.subtitle}
-              price={data.price}
-              priceNote={data.price_note}
-              features={data.features}
-              cta={data.cta}
-              href={href}
-              accent={accent}
-              highlight={highlight}
-              {...("external" in rest ? rest : {})}
+              key={card.key}
+              badge={card.data.badge}
+              title={card.data.title}
+              subtitle={card.data.subtitle}
+              price={card.data.price}
+              priceNote={card.data.price_note}
+              features={card.data.features}
+              cta={card.data.cta}
+              accent={card.accent}
+              highlight={card.highlight}
+              href={"href" in card ? card.href : undefined}
+              external={"external" in card ? card.external : undefined}
+              calModal={"calModal" in card ? card.calModal : undefined}
             />
           ))}
         </div>
