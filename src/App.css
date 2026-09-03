@@ -68,6 +68,13 @@ body {
   }
 }
 
+/* Variante sin movimiento: solo respira el glow (sin cambio de tamaño),
+   apta para "reducir movimiento" — no dispara molestias vestibulares. */
+@keyframes brand-glow {
+  0%, 100% { filter: drop-shadow(0 0 0px rgba(0, 191, 255, 0)); }
+  50%      { filter: drop-shadow(0 0 42px rgba(0, 191, 255, 0.6)); }
+}
+
 .animate-brand-pulse {
   display: inline-block;
   transform-origin: left center;
@@ -78,7 +85,8 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .blob-1, .blob-2 { animation: none !important; }
   .animate-fade-up  { animation: none !important; }
-  .animate-brand-pulse { animation: none !important; }
+  /* Sin escala: se mantiene solo el latido del brillo. */
+  .animate-brand-pulse { animation: brand-glow 3s ease-in-out infinite; }
 }
 
 /* ════════════════════════════════════════════════════════
